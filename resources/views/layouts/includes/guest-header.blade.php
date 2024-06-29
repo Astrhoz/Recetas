@@ -1,4 +1,4 @@
-<header class="bg-secondary text-primary py-4 px-6 flex items-center justify-between">
+<header class="fixed w-full bg-secondary text-primary py-4 px-6 flex items-center justify-between">
     <div class="flex items-center gap-2">
         <img src="{{ asset('images/logo.svg') }}" alt="Logotipo" class="h-10 w-10">
         <h1 class="text-2xl font-bold">Recetero</h1>
