@@ -64,3 +64,61 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Recetero
+
+## Pasos para clonar y empezar a trabajar con un repositorio de GitHub
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/Drawnskii/Recetero.git
+```
+Este comando clona el repositorio remoto de GitHub al directorio actual en tu máquina local.
+
+### 2. Navegar al directorio del proyecto
+```bash
+cd Recetero
+```
+Este comando cambia el directorio actual al directorio del proyecto recién clonado.
+
+### 3. Instalar dependencias de Composer
+```bash
+composer install
+```
+Este comando instala todas las dependencias de PHP especificadas en el archivo `composer.json`.
+
+### 4. Copiar el archivo de configuración de entorno
+```bash
+copy .env.example .env
+```
+Este comando copia el archivo `.env.example` a `.env`. El archivo `.env` es utilizado para configurar variables de entorno como la configuración de la base de datos. Descomentar y ajustar la configuración de la base de datos según sea necesario.
+
+### 5. Generar la clave de la aplicación
+```bash
+php artisan key:generate
+```
+Este comando genera una nueva clave de aplicación y la configura en el archivo `.env`. La clave es utilizada por Laravel para encriptar datos.
+
+### 6. Ejecutar migraciones de la base de datos
+```bash
+php artisan migrate
+```
+Este comando ejecuta las migraciones de la base de datos, creando las tablas necesarias según las definiciones en los archivos de migración.
+
+### 7. Instalar dependencias de Node.js
+```bash
+npm install
+```
+Este comando instala todas las dependencias de Node.js especificadas en el archivo `package.json`.
+
+### 8. Construir los activos del proyecto
+```bash
+npm run build
+```
+Este comando compila y construye los activos del proyecto (CSS, JavaScript, etc.) según la configuración especificada en los archivos de configuración de Webpack o similares.
+
+### 9. Iniciar el servidor de desarrollo
+```bash
+php artisan serve
+```
+Este comando inicia un servidor de desarrollo en PHP, permitiéndote acceder a la aplicación web desde tu navegador en `http://localhost:8000`.
