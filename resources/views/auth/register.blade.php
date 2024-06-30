@@ -13,12 +13,11 @@
                 </div>
                 <div class="mt-4">
                     <nav class="flex justify-center space-x-4">
-                        <button id="signUpTab" class="custom-button-width px-10 py-2 rounded-full bg-gray-300 dark:bg-gray-600 text-center cursor-pointer hover:bg-white dark:hover:bg-white hover:text-gray-600 dark:hover:text-gray-600 border border-gray-400 dark:border-gray-700">
-                            Registrarse
-                        </button>
-                        <button id="signInTab" class="custom-button-width px-10 py-2 rounded-full bg-gray-300 dark:bg-gray-600 text-center cursor-pointer hover:bg-white dark:hover:bg-white hover:text-gray-600 dark:hover:text-gray-600 border border-gray-400 dark:border-gray-700">
-                            Iniciar Sesión
-                        </button>
+                    <x-button class="ms-4">
+                        <a href="{{ route('login') }}">
+                            {{ __('Inicio de Sesion') }}
+                        </a>
+                    </x-button>
                     </nav>
 
                     <style>
@@ -72,58 +71,5 @@
                 </x-button>
             </div>
         </form>
-
-        <!-- Formulario de inicio de sesión (Inicialmente Oculto) -->
-        <form id="loginForm" class="hidden" method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4 flex justify-between items-center">
-                <x-label for="password" value="{{ __('Contraseña') }}" />
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('¿Olvidaste tu contraseña?') }}
-                    </a>
-                @endif
-            </div>
-            <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button class="ms-4">
-                    {{ __('Acceder') }}
-                </x-button>
-            </div>
-        </form>
-
-        <!-- JavaScript para alternar formularios -->
-        <script>
-            const signUpForm = document.getElementById('signUpForm');
-            const loginForm = document.getElementById('loginForm');
-            const signUpTab = document.getElementById('signUpTab');
-            const signInTab = document.getElementById('signInTab');
-
-            signUpTab.addEventListener('click', function(event) {
-                event.preventDefault();
-                signUpForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
-            });
-
-            signInTab.addEventListener('click', function(event) {
-                event.preventDefault();
-                signUpForm.classList.add('hidden');
-                loginForm.classList.remove('hidden');
-            });
-        </script>
     </x-authentication-card>
 </x-guest-layout>
