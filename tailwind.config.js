@@ -44,7 +44,8 @@ export default {
                 },
             },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                playwrite: ['Playwrite IT Moderna', ...defaultTheme.fontFamily.sans]
             },
         },
     },
