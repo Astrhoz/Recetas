@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('quantity');
             $table->string('unit_of_measurement');
 
-            $table->foreignId('recipe_id')->nullable()->constrained('recipes')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('recipe_id')->nullable()->constrained('recipes')->cascadeOnUpdate()->cascadeOnDelete();
 
             $table->timestamps();
         });

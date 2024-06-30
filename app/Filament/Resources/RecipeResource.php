@@ -64,6 +64,8 @@ class RecipeResource extends Resource
                     ->preload(),
                 Forms\Components\FileUpload::make('images')
                     ->required()
+                    ->image()
+                    ->imageEditor()
                     ->directory('recipes'),
                 Forms\Components\Select::make('user_id')
                     ->relationship('users','name')
