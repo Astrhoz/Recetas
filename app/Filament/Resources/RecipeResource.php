@@ -61,12 +61,12 @@ class RecipeResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('amount_of_ingredientes')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('images')
+                Tables\Columns\TextColumn::make('description')
+                    ->limit(50)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user_id')
+                Tables\Columns\ImageColumn::make('images')
+                    ,
+                Tables\Columns\TextColumn::make('users.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
