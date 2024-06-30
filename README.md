@@ -113,11 +113,17 @@ Este comando instala todas las dependencias de Node.js especificadas en el archi
 
 ### 8. Construir los activos del proyecto
 ```bash
+npm artisan storage:link
+```
+Este comando crea un enlace simbólico desde el directorio public/storage hacia el directorio storage/app/public. Esto es necesario para que los archivos almacenados sean accesibles públicamente a través de la web.
+
+### 9. Construir los activos del proyecto
+```bash
 npm run build
 ```
 Este comando compila y construye los activos del proyecto (CSS, JavaScript, etc.) según la configuración especificada en los archivos de configuración de Webpack o similares.
 
-### 9. Iniciar el servidor de desarrollo
+### 10. Iniciar el servidor de desarrollo
 ```bash
 php artisan serve
 ```
