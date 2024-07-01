@@ -2,39 +2,36 @@
     <x-authentication-card>
         <x-slot name="logo" class="w-full max-w-lg mx-auto">
             <div class="flex flex-col items-center justify-center">
-                <x-authentication-card-logo />
+                <!--<x-authentication-card-logo />-->
 
-                <div class="text-center mt-5">
-                    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+                <div>
+                    <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-secondary">
                         <strong>Bienvenido a Recetero</strong>
                     </h2>
-                    <p class="mt-2 text-8xl text-gray-600 dark:text-gray-400">
+                    <p class="mt-2 text-center text-sm text-secondary/70">
                         Inicie sesión en su cuenta o cree una nueva     
                     </p>   
                 </div>
-                
-                <!-- Tabs -->
-                <div class="w-full max-w-lg mx-auto grid grid-cols-2 py-1 px-1 bg-gray-200 p-4 rounded-md mt-5">
-                        
-                        <div class="flex justify-center " >
-                            <a href="{{ route('login') }}" 
-                            class="text-sm font-medium {{ request()->routeIs('login') ? 'text-primary-600 bg-white' : 'text-primary-600 bg-gray-300' }} hover:underline dark:text-primary-500 py-1 w-full flex justify-center rounded-md transition">
-                                Iniciar sesión
-                            </a>
-                        </div>
-                        
-                        <div class="flex justify-center ">
-                            <a href="{{ route('register') }}" 
-                            class="text-sm font-medium {{ request()->routeIs('register') ? 'text-primary-600 bg-white' : 'text-primary-600 bg-gray-300' }} hover:underline dark:text-primary-500 py-1 w-full flex justify-center rounded-md transition">
-                                Registrarse
-                            </a>
-                        </div>    
-                </div>  
-                
             </div>
         </x-slot>
 
-        <div class="w-full max-w-lg mx-auto mt-6 space-y-8">
+        <!-- Tabs -->
+        <div class="grid grid-cols-2 p-1 bg-secondary-200 rounded-md mt-6 shadow-lg">
+            <div class="flex justify-center">
+                <a href="{{ route('login') }}" 
+                class="text-sm font-medium {{ request()->routeIs('login') ? 'text-secondary-800/80 bg-secondary-50' : 'text-secondary-400/90' }} py-1 w-full flex justify-center rounded-md">
+                    Iniciar sesión
+                </a>
+            </div>        
+            <div class="flex justify-center">
+                <a href="{{ route('register') }}" 
+                class="text-sm font-medium {{ request()->routeIs('register') ? 'text-secondary-800/80 bg-secondary-50' : 'text-secondary-400/90' }} py-1 w-full flex justify-center rounded-md">
+                    Registrarse
+                </a>
+            </div>    
+        </div>
+
+        <div class="w-full min-w-[300px] sm:min-w-[450px] sm:max-w-md mt-6 px-6 py-4 bg-secondary-50 shadow-xl overflow-hidden sm:rounded-lg">
             <!-- Authentication Forms -->
             @if (request()->routeIs('login'))
                 @include('auth.login')
@@ -44,4 +41,3 @@
         </div>
     </x-authentication-card>
 </x-guest-layout>
-
