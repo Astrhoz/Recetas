@@ -25,33 +25,54 @@ class RecipeResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\Repeater::make('ingredients')
+                    ->relationship()
+                    ->required()
+                    ->columnSpanFull()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Textarea::make('description')
+                            ->required(),
+                        Forms\Components\TextInput::make('quantity')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\TextInput::make('unit_of_measurement')
+                            ->required(),
+                    ])
+                    ->columns(4),
                 Forms\Components\RichEditor::make('steps')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('tips')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('amount_of_ingredientes')
                     ->required()
                     ->numeric(),
-                Forms\Components\Textarea::make('tips')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\FileUpload::make('images')
-                    ->required()
-                    ->directory('recipes'),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('users','name')
-                    ->required()
-                    ->searchable()
-                    ->preload(),
                 Forms\Components\Select::make('categories')
                     ->required()
                     ->multiple()
                     ->relationship('categories', 'name')
                     ->searchable()
                     ->preload(),
+                Forms\Components\FileUpload::make('images')
+                    ->required()
+                    ->image()
+                    ->imageEditor()
+                    ->directory('recipes'),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('users','name')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+
             ]);
     }
 
@@ -60,14 +81,14 @@ class RecipeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('description')
                     ->limit(50)
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('images')
+                Tables\Columns\TextColumn::make('categories.name')
                     ,
                 Tables\Columns\TextColumn::make('users.name')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

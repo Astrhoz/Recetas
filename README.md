@@ -123,7 +123,13 @@ npm run build
 ```
 Este comando compila y construye los activos del proyecto (CSS, JavaScript, etc.) según la configuración especificada en los archivos de configuración de Webpack o similares.
 
-### 10. Iniciar el servidor de desarrollo
+### 10. Compilar y construir los activos del proyecto
+```bash
+npm run dev
+```
+Este comando compila y construye los activos del proyecto (CSS, JavaScript, etc.) según la configuración especificada en los archivos de Webpack o similares.
+
+### 11. Iniciar el servidor de desarrollo
 ```bash
 php artisan serve
 ```
