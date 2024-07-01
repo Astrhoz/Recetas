@@ -113,7 +113,7 @@ Este comando instala todas las dependencias de Node.js especificadas en el archi
 
 ### 8. Construir los activos del proyecto
 ```bash
-npm artisan storage:link
+php artisan storage:link
 ```
 Este comando crea un enlace simbólico desde el directorio public/storage hacia el directorio storage/app/public. Esto es necesario para que los archivos almacenados sean accesibles públicamente a través de la web.
 
