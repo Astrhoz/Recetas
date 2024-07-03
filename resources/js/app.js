@@ -1,2 +1,2 @@
 import './bootstrap';
-import './smoth-scroll'
+import './smoth-scroll';
