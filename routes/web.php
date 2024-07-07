@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use League\Csv\Query\Row;
 
 Route::get('/', HomeController::class);
 
@@ -21,4 +22,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/recipes', function() {
+        return view('user-content.recipes');
+    })->name('recipes');
+    Route::get('/saved-recipes', function() {
+        return view('user-content.saved-recipes');
+    })->name('saved-recipes');
 });
