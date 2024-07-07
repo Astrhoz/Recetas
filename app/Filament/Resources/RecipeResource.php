@@ -49,7 +49,8 @@ class RecipeResource extends Resource
                     ->columns(4),
                 Forms\Components\RichEditor::make('steps')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->fileAttachmentsDirectory('steps_recipes'),
                 Forms\Components\Textarea::make('tips')
                     ->required()
                     ->columnSpanFull(),
