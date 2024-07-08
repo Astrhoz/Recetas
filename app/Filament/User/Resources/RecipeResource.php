@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\User\Resources;
 
-use App\Filament\Resources\RecipeResource\Pages;
-use App\Filament\Resources\RecipeResource\RelationManagers;
+use App\Filament\User\Resources\RecipeResource\Pages;
+use App\Filament\User\Resources\RecipeResource\RelationManagers;
 use App\Models\Recipe;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,12 +12,18 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeResource extends Resource
 {
     protected static ?string $model = Recipe::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
+    }
 
     public static function form(Form $form): Form
     {
@@ -82,16 +88,10 @@ class RecipeResource extends Resource
                             ->imageEditor()
                             ->directory('recipes'),
 
-                        Forms\Components\Select::make('user_id')
-                            ->relationship('users', 'name')
-                            ->required()
-                            ->searchable()
-                            ->preload(),
                     ])
                     ->columnSpanFull()
             ]);
     }
-
 
     public static function table(Table $table): Table
     {
@@ -143,7 +143,6 @@ class RecipeResource extends Resource
         return [
             'index' => Pages\ListRecipes::route('/'),
             'create' => Pages\CreateRecipe::route('/create'),
-            'view' => Pages\ViewRecipe::route('/{record}'),
             'edit' => Pages\EditRecipe::route('/{record}/edit'),
         ];
     }
