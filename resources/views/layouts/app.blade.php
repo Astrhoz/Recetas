@@ -18,48 +18,15 @@
 <body class="font-sans antialiased bg-secondary-100/80">
     <x-banner />
 
-    {{-- Encabezado --}}
     <div class="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
         {{-- Menú lateral --}}
-        <div class="hidden border-r border-secondary-200 bg-secondary-100 lg:block">
-            <div class="flex h-full max-h-screen flex-col gap-2">
-                <div class="flex h-[60px] items-center border-b border-secondary-200 px-6">
-                    <a href="#" class="flex items-center gap-2 font-semibold">
-                        {{-- CookingPotIcon --}}
-                        <span class="text-secondary/80">Recetas</span>
-                    </a>
-                </div>
-                <div class="flex-1 overflow-auto py-2">
-                    <nav class="grid items-start px-4 text-sm font-medium">
-                        <a href="#"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-secondary-500 transition-all hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-50">
-                            {{-- HomeIcon --}}
-                            Inicio
-                        </a>
-                        <a href="#"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-secondary-500 transition-all hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-50">
-                            {{-- SearchIcon --}}
-                            Explorar
-                        </a>
-                        <a href="#"
-                            class="flex items-center gap-3 rounded-lg bg-secondary-100 px-3 py-2 text-secondary-900 transition-all hover:text-secondary-900 dark:bg-secondary-800 dark:text-secondary-50 dark:hover:text-secondary-50">
-                            {{-- CookingPotIcon --}}
-                            Mis Recetas
-                        </a>
-                        <a href="#"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-secondary-500 transition-all hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-50">
-                            {{-- UserIcon --}}
-                            Perfil
-                        </a>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        @include('layouts.includes.app-side-bar')
+
         {{-- Contenido principal --}}
         <div class="flex flex-col">
+
             {{-- Encabezado --}}
             @include('layouts.includes.app-header')
-            {{-- @include('navigation-menu') --}}
 
             {{-- Contenido principal --}}
             <main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
