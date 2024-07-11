@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('/') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -14,7 +14,7 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex h-16">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{-- <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
@@ -22,7 +22,7 @@
                     </x-nav-link>
                     <x-nav-link href="{{ route('saved-recipes') }}" :active="request()->routeIs('saved-recipes')">
                         {{ __('Mi Almacen') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
 
                 <!-- Settings Dropdown -->
@@ -93,7 +93,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            {{-- <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
@@ -101,7 +101,7 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Mi Almacen') }}
-            </x-responsove-nav-link>
+            </x-responsove-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->

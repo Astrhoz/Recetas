@@ -3,8 +3,15 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use League\Csv\Query\Row;
+use Illuminate\Http\Request;
 
-Route::get('/', HomeController::class);
+Route::get('/', function (Request $request) {
+    if (auth()->check()) {
+        return view('index');
+    }
+    return app(HomeController::class)($request);
+});
+
 
 Route::get('/login', function () {
     return view('auth.auth');
