@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use BezhanSalleh\PanelSwitch\PanelSwitch;
 use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Auth\Notifications\VerifyEmail;
@@ -22,6 +23,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
+            /** @var \App\Models\User */
+            $user = auth()->user();
+            $panelSwitch->simple();
+            $panelSwitch
+                ->visible(fn (): bool =>$user?->hasAnyRole([
+                    'super_admin',
+                ]));
+        });
+
         VerifyEmail::toMailUsing(function (object $notifiable, string $url) {
             return (new MailMessage)
                 ->subject('Confirme su dirección de correo electrónico')
