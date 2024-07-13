@@ -1,10 +1,10 @@
 <x-guest-layout>
     @include('layouts.includes.guest-header')
 
-    <section id="about" class="flex flex-col items-center justify-center bg-secondary text-center text-primary py-20">
-        <h1 class="text-[10vw] font-extrabold leading-none">RECETERO</h1>
+    <section id="about" class="flex flex-col items-center justify-center bg-secondary text-center text-primary min-h-screen">
+        <h1 class="mt-[4vw] text-[10vw] font-extrabold leading-none">RECETERO</h1>
         <img src="https://static.vecteezy.com/system/resources/previews/025/065/315/non_2x/fast-food-meal-with-ai-generated-free-png.png"
-            alt="Recetero" class="h-[50vw] max-h-[400px] mt-[-4vw] object-cover" />
+            alt="Recetero" class="h-[45vw] max-h-[400px] mt-[-4vw] object-cover" />
         <div class="text-lg font-thin px-8 mt-12">
             <strong>Recetero</strong> es una red social donde puedes encontrar recetas de cualquier tipo realizadas por
             otros usuarios. Principalmente queremos que encuentres recetas según los ingredientes que tengas disponible
@@ -14,7 +14,7 @@
     </section>
 
     <!-- Contenido principal -->
-    <section class="bg-primary py-12 px-6">
+    <section class="py-12 px-6">
         <div id="explore" class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
             <!-- Receta Destacada -->
             <div>
@@ -33,6 +33,7 @@
                 <a href="#explore"
                     class="inline-flex items-center gap-2 bg-secondary text-primary px-4 py-2 rounded-md hover:bg-secondary-900">
                     Ver receta
+                    <x-bytesize-arrow-right class="h-4 w-4 text-primary" />
                 </a>
             </div>
         </div>
@@ -56,7 +57,7 @@
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 @foreach ($categories as $category)
-                    <x-post.category-card :category="$category"/>
+                    <x-recipe.category-card :category="$category"/>
                 @endforeach
             </div>
         </div>
@@ -69,9 +70,7 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 @foreach ($recipes as $recipe)
-                    <x-post.post-card img="{{ $recipe->images }}"
-                        title="{{ $recipe->title }}"
-                        paragraph="{{ $recipe->description }}" />
+                    <x-recipe.recipe-card :recipe="$recipe" />
                 @endforeach
             </div>
         </div>
