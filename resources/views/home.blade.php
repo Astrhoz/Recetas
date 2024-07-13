@@ -14,7 +14,7 @@
     </section>
 
     <!-- Contenido principal -->
-    <section class="bg-primary py-12 px-6">
+    <section class="py-12 px-6">
         <div id="explore" class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
             <!-- Receta Destacada -->
             <div>
@@ -57,7 +57,7 @@
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 @foreach ($categories as $category)
-                    <x-post.category-card :category="$category"/>
+                    <x-recipe.category-card :category="$category"/>
                 @endforeach
             </div>
         </div>
@@ -70,9 +70,7 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 @foreach ($recipes as $recipe)
-                    <x-post.post-card img="{{ $recipe->images }}"
-                        title="{{ $recipe->title }}"
-                        paragraph="{{ $recipe->description }}" />
+                    <x-recipe.recipe-card :recipe="$recipe" />
                 @endforeach
             </div>
         </div>
