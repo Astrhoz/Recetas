@@ -9,14 +9,14 @@
         </span>
     </div>
     <div>
-        <ul id="nav-menu" class="md:flex -z-10 md:items-center md:static absolute bg-secondary w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 top-[-400px] md:top-auto text-nowrap">
+        <ul id="nav-menu" class="md:flex -z-10 md:items-center md:static absolute bg-secondary w-full left-0 md:w-auto md:py-0 top-[-400px] md:pl-0 pl-7 text-nowrap">
             <li class="mx-4 my-6 md:my-0"><a href="#about" class="text-md hover:text-lg duration-300">Acerca de</a></li>
             <li class="mx-4 my-6 md:my-0"><a href="#explore" class="text-md hover:text-lg duration-300">Explorar</a></li>
             <li class="mx-4 my-6 md:my-0"><a href="#categories" class="text-md hover:text-lg duration-300">Categorias</a>
             </li>
             <li class="mx-4 my-6 md:my-0"><a href="#cards" class="text-md hover:text-lg duration-300">Tendencias</a></li>
             @if (Route::has('login'))
-                <div class="flex items-center gap-2 whitespace-nowrap pl-4">
+                <div class="flex items-center gap-2 whitespace-nowrap pl-4 my-6 md:my-0">
                     @auth
                         <a href="{{ url('/dashboard') }}"
                             class="px-4 py-2 rounded-md bg-primary text-secondary hover:bg-secondary-900 hover:text-primary">
@@ -45,9 +45,9 @@
         const menu = document.getElementById('nav-menu');
         if (menu.classList.contains('top-[-400px]')) {
             menu.classList.remove('top-[-400px]');
-            menu.classList.add('top-[60px]'); // Ajusta esta altura según tu diseño
+            menu.classList.add('top-[76px]'); // Ajusta esta altura según tu diseño
         } else {
-            menu.classList.remove('top-[60px]');
+            menu.classList.remove('top-[76px]');
             menu.classList.add('top-[-400px]');
         }
     }
