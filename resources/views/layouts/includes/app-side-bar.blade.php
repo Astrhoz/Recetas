@@ -2,7 +2,7 @@
     <div class="flex h-full max-h-screen flex-col gap-2">
         <div class="flex h-[60px] items-center border-b border-secondary-200 px-6">
             <a href="#" class="flex items-center gap-2 font-semibold">
-                {{-- CookingPotIcon --}}
+                <x-authentication-card-logo />
                 <span class="text-3xl font-semibold font-playwrite cursor-pointer text-secondary">Recetas</span>
             </a>
         </div>
