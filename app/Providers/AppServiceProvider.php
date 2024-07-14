@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
                 ->visible(fn (): bool =>$user?->hasAnyRole([
                     'super_admin',
                 ]));
-        });
+        });
 
         VerifyEmail::toMailUsing(function (object $notifiable, string $url) {
             return (new MailMessage)
