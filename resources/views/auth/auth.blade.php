@@ -2,8 +2,7 @@
     <x-authentication-card>
         <x-slot name="logo" class="w-full max-w-lg mx-auto">
             <div class="flex flex-col items-center justify-center">
-                <!--<x-authentication-card-logo />-->
-
+                <x-authentication-card-logo />
                 <div>
                     <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-secondary">
                         <strong>Bienvenido a Recetero</strong>
