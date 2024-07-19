@@ -1,13 +1,14 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <x-logo class="h-16" />
         </x-slot>
 
-        <div class="w-full min-w-[300px] sm:min-w-[450px] sm:max-w-md mt-6 px-6 py-4 bg-secondary-50 shadow-xl overflow-hidden sm:rounded-lg">
+        <div
+            class="w-full min-w-[300px] sm:min-w-[450px] sm:max-w-md mt-6 px-6 py-4 bg-secondary-50 shadow-xl overflow-hidden sm:rounded-lg">
             <div class="mb-4 text-sm text-secondary-400/70">
-            {{ __('Antes de continuar!') }}<br>
-            {{ __('Verifique su cuenta haciendo clic en el enlace que acabamos de enviarle al correo') }}
+                <span class="font-semibold">{{ __('¡Antes de continuar!') }}</span><br>
+                {{ __('Verifique su cuenta haciendo clic en el enlace que acabamos de enviarle al correo') }}
             </div>
 
             @if (session('status') == 'verification-link-sent')
@@ -29,19 +30,18 @@
             </div>
 
             <div class="grid grid-cols-2 p-1 mt-4">
-                    <a
-                        href="{{ route('profile.show') }}"
-                        class="flex items-center justify-center text-sm text-secondary-400/70 hover:text-secondary-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-800/80"
-                    >
-                        {{ __('Editar perfil') }}</a>
+                <a href="{{ route('profile.show') }}"
+                    class="flex items-center justify-center text-sm text-secondary-400/70 hover:text-secondary-800/80 rounded-md focus:outline-none">
+                    {{ __('Editar perfil') }}</a>
 
-                    <form method="POST" action="{{ route('logout') }}" class="flex items-center justify-center ">
-                        @csrf
+                <form method="POST" action="{{ route('logout') }}" class="flex items-center justify-center ">
+                    @csrf
 
-                        <button type="submit" class="text-sm text-secondary-400/70 hover:text-secondary-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-800/80 ms-2">
-                            {{ __('Cerrar sesión') }}
-                        </button>
-                    </form>
+                    <button type="submit"
+                        class="text-sm text-secondary-400/70 hover:text-secondary-800/80 rounded-md focus:outline-none ms-2">
+                        {{ __('Cerrar sesión') }}
+                    </button>
+                </form>
             </div>
         </div>
     </x-authentication-card>

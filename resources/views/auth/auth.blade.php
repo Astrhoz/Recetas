@@ -17,7 +17,7 @@
         </x-slot>
 
         <!-- Tabs -->
-        <div class="grid grid-cols-2 p-1 bg-secondary-200 rounded-md mt-6 shadow-lg">
+        <div class="grid grid-cols-2 p-1 bg-secondary-200 rounded-md mt-6 shadow-none sm:shadow-xl">
             <div class="flex justify-center">
                 <a href="{{ route('login') }}"
                 class="text-sm font-medium {{ request()->routeIs('login') ? 'text-secondary-800/80 bg-secondary-50' : 'text-secondary-400/90' }} py-1 w-full flex justify-center rounded-md">
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <div class="w-full min-w-[300px] sm:min-w-[450px] sm:max-w-md mt-6 mb-6 px-6 py-4 bg-secondary-50 shadow-xl overflow-hidden sm:rounded-lg">
+        <div class="w-full min-w-[300px] sm:m-w-[450px] sm:max-w-md my-6 px-6 py-4 bg-secondary-50 shadow-none sm:shadow-xl overflow-hidden rounded-lg">
             <!-- Authentication Forms -->
             @if (request()->routeIs('login'))
                 @include('auth.login')
