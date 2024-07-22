@@ -1,8 +1,8 @@
 <div class="hidden border-r border-secondary-200 bg-secondary-100 lg:block">
     <div class="flex h-full max-h-screen flex-col gap-2">
-        <div class="flex h-[60px] items-center border-b border-secondary-200 px-6">
-            <a href="#" class="flex items-center gap-2 font-semibold">
-                <x-authentication-card-logo />
+        <div class="flex h-[60px] items-center border-b border-secondary-200 pl-3">
+            <a href="{{ url('/') }}" class="flex items-center font-semibold">
+                <x-logo class="h-12" />
                 <span class="text-3xl font-semibold font-playwrite cursor-pointer text-secondary">Recetas</span>
             </a>
         </div>

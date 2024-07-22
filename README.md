@@ -134,3 +134,15 @@ Este comando inicia un servidor de desarrollo en PHP, permitiéndote acceder a l
 npm run dev
 ```
 Este comando compila y construye los activos del proyecto (CSS, JavaScript, etc.) según la configuración especificada en los archivos de Webpack o similares.
+
+### 12. Crear un superadministrador
+```bash
+php artisan shield:super-admin
+```
+Este comando crea un usuario con privilegios de superadministrador en el sistema.
+
+### 13. Generar políticas y permisos
+```bash
+php artisan shield:generate --all
+```
+Este comando genera todas las políticas y permisos necesarios para el proyecto.
