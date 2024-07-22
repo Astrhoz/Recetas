@@ -1,6 +1,8 @@
 <nav class="bg-secondary w-full fixed p-5 md:flex md:items-center md:justify-between text-primary shadow">
     <div class="flex justify-between items-center">
-        <x-authentication-card-logo />
+        <a href="{{ url('/') }}">
+            <x-logo class="h-14"/>
+        </a>
         <span class="text-3xl font-semibold font-playwrite cursor-pointer text-primary">
             Recetero
         </span>
