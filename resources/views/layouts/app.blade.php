@@ -30,6 +30,14 @@
 
             {{-- Contenido principal --}}
             <main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
+                <div
+                    class="w-full bg-secondary-50/20 py-3 px-4 flex items-center justify-between rounded-md shadow-md sticky top-4">
+                    <h1 class="text-lg text-secondary-900 font-semibold">{{ $title ?? 'Título de la Pestaña' }}</h1>
+                    <a href="{{ route('create-recipe') }}"
+                        class="bg-secondary-800 text-primary text-sm p-2 rounded hover:bg-secondary-900 hover:cursor-pointer">
+                        Crear Receta
+                    </a>
+                </div>
                 {{ $slot }}
             </main>
         </div>

@@ -35,4 +35,7 @@ Route::middleware([
     Route::get('/saved-recipes', function() {
         return view('user-content.saved-recipes');
     })->name('saved-recipes');
+    Route::get('/create-recipe', function () {
+        return view('create-recipe');
+    })->name('create-recipe');
 });
