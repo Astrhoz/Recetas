@@ -9,13 +9,13 @@
     <nav class="hidden sm:flex items-center gap-4">
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex h-[60px]">
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Inicio') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
+            <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Mis Recetas') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('saved-recipes') }}" :active="request()->routeIs('saved-recipes')">
+            <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Mi Almacén') }}
             </x-nav-link>
         </div>
@@ -88,13 +88,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden w-full absolute left-0 top-full bg-secondary-100">
         <div class="pt-2 pb-3 space-y-1 bg-secondary-50/40 border-t border-secondary-200 text-base font-medium">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Inicio') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
+            <x-responsive-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Mis Recetas') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('saved-recipes') }}" :active="request()->routeIs('saved-recipes')">
+            <x-responsive-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Mi Almacén') }}
             </x-responsive-nav-link>
         </div>

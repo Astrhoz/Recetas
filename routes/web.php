@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Recipe;
 use App\Http\Controllers\HomeController;
+use App\Livewire\Recipes\CreateRecipe;
+use App\Livewire\Recipes\EditRecipe;
 use Illuminate\Support\Facades\Route;
-use League\Csv\Query\Row;
 use Illuminate\Http\Request;
 
 Route::get('/', function (Request $request) {
@@ -11,7 +13,6 @@ Route::get('/', function (Request $request) {
     }
     return app(HomeController::class)($request);
 });
-
 
 Route::get('/login', function () {
     return view('auth.auth');
@@ -26,16 +27,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::get('/recipes', function() {
-        return view('user-content.recipes');
-    })->name('recipes');
-    Route::get('/saved-recipes', function() {
-        return view('user-content.saved-recipes');
-    })->name('saved-recipes');
-    Route::get('/create-recipe', function () {
-        return view('create-recipe');
-    })->name('create-recipe');
+    Route::get('/new-recipe', function () {
+        return view('new-recipe'); // Renderiza la vista que contiene el componente Livewire
+    })->name('new-recipe');
+
+    Route::get('/edit-recipe/{recipe}', function ($recipeId) {
+        // Encuentra la receta o muestra un error 404 si no se encuentra
+        $recipe = Recipe::findOrFail($recipeId);
+
+        // Devuelve la vista y la receta
+        return view('edit-recipe', compact('recipe'));
+    })->name('edit-recipe');
 });

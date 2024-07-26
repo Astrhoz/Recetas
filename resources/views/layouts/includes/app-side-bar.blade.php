@@ -8,12 +8,12 @@
         </div>
         <div class="flex-1 overflow-auto py-2">
             <nav>
-                <x-side-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                     <x-bytesize-bookmark class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Explorar') }}
                 </x-side-nav-link>
 
-                <x-side-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
+                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                     <x-bytesize-lightning class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Tendencias') }}
                 </x-side-nav-link>
@@ -23,21 +23,21 @@
                     <x-bytesize-book class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     Categorías
                 </div>
-                <x-side-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')" class="ml-8 text-sm">
+                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')" class="ml-8 text-sm">
                     {{ __('Categoría 1') }}
                 </x-side-nav-link>
-                <x-side-nav-link href="{{ route('saved-recipes') }}" :active="request()->routeIs('saved-recipes')" class="ml-8 text-sm">
+                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')" class="ml-8 text-sm">
                     {{ __('Categoría 2') }}
                 </x-side-nav-link>
-                <x-side-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="ml-8 text-sm">
+                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')" class="ml-8 text-sm">
                     {{ __('Categoría 3') }}
                 </x-side-nav-link>
-                <x-side-nav-link href="{{ route('dashboard') }}" class="ml-8 text-sm">
+                <x-side-nav-link href="{{ route('new-recipe') }}" class="ml-8 text-sm">
                     {{ __('Categoría 4') }}
                 </x-side-nav-link>
 
                 {{-- Usuarios a los que está siguiendo --}}
-                <x-side-nav-link href="{{ route('saved-recipes') }}" >
+                <x-side-nav-link href="{{ route('new-recipe') }}" >
                     <x-bytesize-user class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70"/>
                     {{ __('Siguiendo') }}
                 </x-side-nav-link>
