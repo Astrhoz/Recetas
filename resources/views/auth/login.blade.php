@@ -1,5 +1,3 @@
-<x-validation-errors class="mb-4" />
-
 @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
         {{ session('status') }}
@@ -14,6 +12,8 @@
             <strong>Inicia sesión con tu cuenta</strong>
         </h2>
     </div>
+
+    <x-validation-errors class="mb-4" />
 
     <div class="space-y-2">
         <x-label class="text-secondary/70" for="email" value="{{ __('Email') }}" />
@@ -46,3 +46,4 @@
         </x-button>
     </div>
 </form>
+
