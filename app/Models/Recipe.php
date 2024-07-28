@@ -19,6 +19,14 @@ class Recipe extends Model
         return $this->hasMany(Ingredient::class,'recipe_id');
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class,'comment_id');
+    }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class,'rating_id');
+    }
+
     public function users(){
         return $this->belongsTo(User::class,'user_id');
     }
