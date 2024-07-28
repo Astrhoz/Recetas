@@ -50,9 +50,6 @@ class RecipeResource extends Resource
                                     ->required()
                                     ->maxLength(255),
 
-                                Forms\Components\Textarea::make('description')
-                                    ->required(),
-
                                 Forms\Components\TextInput::make('quantity')
                                     ->required()
                                     ->numeric(),
@@ -60,7 +57,7 @@ class RecipeResource extends Resource
                                 Forms\Components\TextInput::make('unit_of_measurement')
                                     ->required(),
                             ])
-                            ->columns(4),
+                            ->columns(3),
 
                         Forms\Components\RichEditor::make('steps')
                             ->required()
@@ -70,10 +67,6 @@ class RecipeResource extends Resource
                         Forms\Components\Textarea::make('tips')
                             ->required()
                             ->columnSpanFull(),
-
-                        Forms\Components\TextInput::make('amount_of_ingredients')
-                            ->required()
-                            ->numeric(),
 
                         Forms\Components\Select::make('categories')
                             ->required()
@@ -105,8 +98,8 @@ class RecipeResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('categories.name')
                     ,
-                Tables\Columns\TextColumn::make('users.name')
-                    ->sortable(),
+                Tables\Columns\ImageColumn::make('images')
+                    ,
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
