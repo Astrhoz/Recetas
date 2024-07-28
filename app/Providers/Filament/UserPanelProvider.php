@@ -33,9 +33,9 @@ class UserPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/User/Widgets'), for: 'App\\Filament\\User\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+                \App\Filament\User\Widgets\UserWidgetStats::class,
+                \App\Filament\User\Widgets\UserWidgetFollowersChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

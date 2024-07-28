@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
 
             $table->string('name')->nullable();
-            $table->text('description');
             $table->string('quantity');
             $table->string('unit_of_measurement');
 

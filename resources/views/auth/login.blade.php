@@ -4,12 +4,12 @@
     </div>
 @endif
 
-<form method="POST" action="{{ route('login') }}"> 
-    @csrf  
+<form method="POST" action="{{ route('login') }}">
+    @csrf
 
     <div class="mb-10 ">
         <h2 class="text-3xl font-medium text-secondary">
-            <strong>Inicia sesión con tu cuenta</strong>
+            <strong>Inicia sesión en tu cuenta</strong>
         </h2>
     </div>
 
@@ -46,4 +46,5 @@
         </x-button>
     </div>
 </form>
+
 
