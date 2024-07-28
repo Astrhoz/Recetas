@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
-[x-cloak] {
-    display: none;
+.fi-fo-field-wrp-label > * {
+    @apply text-secondary-900;
+}
+
+.fi-btn-label {
+    @apply text-secondary-900;
 }
