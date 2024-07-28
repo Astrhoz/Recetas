@@ -6,23 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="application-name" content="{{ config('app.name') }}">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <title>{{ config('app.name') }}</title>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- FAVICON -->
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
-    
-    @filamentStyles
-    
-    @vite('resources/css/app.css')
+    <!-- Styles -->
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased bg-secondary-100/80">
@@ -41,9 +31,9 @@
             {{-- Contenido principal --}}
             <main class="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
                 <div
-                    class="w-full bg-secondary-50 py-3 px-4 flex items-center justify-between rounded-md shadow-md sticky top-0 z-10">
+                    class="w-full bg-secondary-50/20 py-3 px-4 flex items-center justify-between rounded-md shadow-md sticky top-4">
                     <h1 class="text-lg text-secondary-900 font-semibold">{{ $title ?? 'Título de la Pestaña' }}</h1>
-                    <a href="{{ route('new-recipe') }}"
+                    <a href="{{ route('create-recipe') }}"
                         class="bg-secondary-800 text-primary text-sm p-2 rounded hover:bg-secondary-900 hover:cursor-pointer">
                         Crear Receta
                     </a>
@@ -56,9 +46,9 @@
     @include('layouts.includes.guest-footer')
 
 
-    @filamentScripts
-    
-    @vite('resources/js/app.js')
+    @stack('modals')
+
+    @livewireScripts
 </body>
 
 </html>
