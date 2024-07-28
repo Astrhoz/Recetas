@@ -7,10 +7,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="application-name" content="{{ config('app.name') }}">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name') }}</title>
 
+    <!-- FAVICON -->
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <style>
         [x-cloak] {
             display: none !important;

@@ -10,20 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class AdminWidgetChart extends ChartWidget
 {
-    protected static ?string $heading = 'User and Recipe Growth';
+    protected static ?string $heading = 'Recipe Growth';
 
     protected function getData(): array
     {
         // Definir el rango de fechas (últimos 30 días)
         $startDate = Carbon::now()->subDays(30);
         $endDate = Carbon::now();
-
-        // Obtener los datos de crecimiento de usuarios por día
-        $userGrowth = User::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->groupBy('date')
-            ->orderBy('date', 'asc')
-            ->get();
 
         // Obtener los datos de crecimiento de recetas por día
         $recipeGrowth = Recipe::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
@@ -38,12 +31,6 @@ class AdminWidgetChart extends ChartWidget
             $dates[$date->format('Y-m-d')] = 0;  // Inicializar con 0
         }
 
-        // Preparar los datos de crecimiento de usuarios
-        $userCounts = $dates;
-        foreach ($userGrowth as $user) {
-            $userCounts[$user->date] = $user->count;
-        }
-
         // Preparar los datos de crecimiento de recetas
         $recipeCounts = $dates;
         foreach ($recipeGrowth as $recipe) {
@@ -53,13 +40,6 @@ class AdminWidgetChart extends ChartWidget
         return [
             'labels' => array_keys($dates),
             'datasets' => [
-                [
-                    'label' => 'User Growth',
-                    'data' => array_values($userCounts),
-                    'borderColor' => 'rgba(75, 192, 192, 1)',
-                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
-                    'fill' => true,
-                ],
                 [
                     'label' => 'Recipe Growth',
                     'data' => array_values($recipeCounts),

@@ -16,7 +16,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                'primary': {
+                primary: {
                     DEFAULT: '#eff5fc',
                     '50': '#eff5fc',
                     '100': '#e1ecf8',
@@ -30,7 +30,7 @@ export default {
                     '900': '#2f4479',
                     '950': '#212b4a',
                 },
-                'secondary': {
+                secondary: {
                     DEFAULT: '#35274a',
                     '50': '#f2f1fc',
                     '100': '#e7e5fa',
@@ -47,7 +47,7 @@ export default {
             },
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
-                playwrite: ['Playwrite IT Moderna', ...defaultTheme.fontFamily.sans]
+                playwrite: ['Playwrite IT Moderna', ...defaultTheme.fontFamily.sans],
             },
         },
     },

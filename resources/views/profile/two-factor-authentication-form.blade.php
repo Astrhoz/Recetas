@@ -50,7 +50,7 @@
 
                 @if ($showingConfirmation)
                     <div class="mt-4">
-                        <x-label for="code" value="{{ __('Code') }}" />
+                        <x-label for="code" value="{{ __('Código') }}" />
 
                         <x-input id="code" type="text" name="code" class="block mt-1 w-1/2" inputmode="numeric" autofocus autocomplete="one-time-code"
                             wire:model="code"
@@ -99,7 +99,7 @@
                 @else
                     <x-confirms-password wire:then="showRecoveryCodes">
                         <x-secondary-button class="me-3">
-                            {{ __('Mostrar códigos de recuperación') }}
+                            {{ __('Códigos de recuperación') }}
                         </x-secondary-button>
                     </x-confirms-password>
                 @endif

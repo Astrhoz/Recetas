@@ -56,10 +56,6 @@ class ModifyRecipe extends Component implements HasForms
                             ->required()
                             ->maxLength(255),
 
-                        Forms\Components\Textarea::make('description')
-                            ->label('Descripción')
-                            ->required(),    
-
                         Forms\Components\TextInput::make('quantity')
                             ->label('Cantidad')
                             ->required()
@@ -69,7 +65,7 @@ class ModifyRecipe extends Component implements HasForms
                             ->label('Unidad de medida')
                             ->required(),
                     ])
-                    ->columns(4),
+                    ->columns(3),
 
                 Forms\Components\RichEditor::make('steps')
                     ->label('Pasos para la preparación')
@@ -81,11 +77,6 @@ class ModifyRecipe extends Component implements HasForms
                     ->label('Consejos')
                     ->required()
                     ->columnSpanFull(),
-
-                Forms\Components\TextInput::make('amount_of_ingredients')
-                    ->label('Cantidad de ingredientes')
-                    ->required()
-                    ->numeric(),
 
                 Forms\Components\Select::make('categories')
                     ->label('Categorías')
@@ -106,11 +97,14 @@ class ModifyRecipe extends Component implements HasForms
             ->model($this->record);
     }
 
-    public function save(): void
+    public function save()
     {
         $data = $this->form->getState();
 
         $this->record->update($data);
+
+        // Redireccionar a una ruta específica después de guardar
+        return redirect()->route('my-recipes'); // Cambia 'ruta.destino' por el nombre de tu ruta
     }
 
     public function render(): View
