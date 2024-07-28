@@ -99,7 +99,7 @@ class CreateRecipe extends Component implements HasForms
             ->model(Recipe::class);
     }
 
-    public function create(): void
+    public function create()
     {
         $data = $this->form->getState();
 
@@ -110,8 +110,8 @@ class CreateRecipe extends Component implements HasForms
 
         $this->form->model($record)->saveRelationships();
 
-        // Reinitialize the form to clear its data.
-        $this->form->fill();
+        // Redireccionar a una ruta específica después de guardar
+        return redirect()->route('my-recipes'); // Cambia 'ruta.destino' por el nombre de tu ruta
     }
 
     public function render(): View

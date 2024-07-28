@@ -9,10 +9,10 @@
     <nav class="hidden sm:flex items-center gap-4">
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex h-[60px]">
-            <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
+            <x-nav-link href="{{ url('/') }}" :active="request()->is('/')">
                 {{ __('Inicio') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
+            <x-nav-link href="{{ route('my-recipes') }}" :active="request()->routeIs('my-recipes')">
                 {{ __('Mis Recetas') }}
             </x-nav-link>
             <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">

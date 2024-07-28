@@ -27,11 +27,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/new-recipe', function () {
+    Route::get('/my-recipes', function () {
+        return view('my-recipes'); // Renderiza la vista que contiene el componente Livewire
+    })->name('my-recipes');
+
+    Route::get('/my-recipes/new-recipe', function () {
         return view('new-recipe'); // Renderiza la vista que contiene el componente Livewire
     })->name('new-recipe');
 
-    Route::get('/edit-recipe/{recipe}', function ($recipeId) {
+    Route::get('/my-recipes/edit-recipe/{recipe}', function ($recipeId) {
         // Encuentra la receta o muestra un error 404 si no se encuentra
         $recipe = Recipe::findOrFail($recipeId);
 

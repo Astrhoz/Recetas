@@ -9,6 +9,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Livewire\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class ModifyRecipe extends Component implements HasForms
 {
@@ -20,6 +21,12 @@ class ModifyRecipe extends Component implements HasForms
 
     public function mount(): void
     {
+        // Check if the authenticated user is the author of the recipe
+        if ($this->record->user_id !== Auth::id()) {
+            // You can redirect or show an error message
+            abort(403, 'Unauthorized action.');
+        }
+
         $this->form->fill($this->record->attributesToArray());
     }
 
