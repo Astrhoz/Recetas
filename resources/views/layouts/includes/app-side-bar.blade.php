@@ -37,11 +37,37 @@
                 </x-side-nav-link>
 
                 {{-- Usuarios a los que está siguiendo --}}
-                <x-side-nav-link href="{{ route('saved-recipes') }}" >
-                    <x-bytesize-user class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70"/>
+                <x-side-nav-link href="{{ route('saved-recipes') }}">
+                    <x-bytesize-user class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Siguiendo') }}
                 </x-side-nav-link>
             </nav>
         </div>
     </div>
 </div>
+
+
+<div class="lg:hidden fixed bottom-0 left-0 z-50 w-full h-16 bg-secondary-100 border-t border-secondary-200 md:hidden sm:flex">
+    <div class="flex justify-around py-2">
+        <x-side-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-bytesize-bookmark class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
+        </x-side-nav-link>
+
+        <x-side-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
+            <x-bytesize-lightning class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
+        </x-side-nav-link>
+
+        <x-side-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
+            <x-bytesize-book class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
+        </x-side-nav-link>
+
+        <x-side-nav-link href="{{ route('saved-recipes') }}" :active="request()->routeIs('saved-recipes')">
+            <x-bytesize-user class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
+        </x-side-nav-link>
+    </div>
+</div>
+
+
+
+
+
