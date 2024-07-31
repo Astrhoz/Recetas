@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function (Request $request) {
     if (auth()->check()) {
-        return view('index');
+        return view('feed');
     }
     return app(HomeController::class)($request);
 });
