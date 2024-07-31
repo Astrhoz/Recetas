@@ -54,6 +54,16 @@
                     <x-dropdown-link href="{{ route('profile.show') }}">
                         {{ __('Perfil') }}
                     </x-dropdown-link>
+                    {{-- Redirección del dashboard en función del rol del usuario --}}
+                    @if (auth()->user()->hasRole('super_admin'))
+                        <x-dropdown-link href="/admin">
+                            {{ __('Dashboard') }}
+                        </x-dropdown-link>
+                    @else
+                        <x-dropdown-link href="/user">
+                            {{ __('Dashboard') }}
+                        </x-dropdown-link>
+                    @endif
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-dropdown-link href="{{ route('api-tokens.index') }}">
                             {{ __('API Tokens') }}
