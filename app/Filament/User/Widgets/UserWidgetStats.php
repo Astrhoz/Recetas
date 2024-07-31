@@ -26,17 +26,17 @@ class UserWidgetStats extends BaseWidget
         $followedCount = Follower::where('user_id', $user->id)->count();
 
         return [
-            Stat::make('Recipes', $recipeCount)
+            Stat::make(__('filament.widgets.stats.recipes'), $recipeCount)
                 ->icon('heroicon-o-book-open'),
-            Stat::make('Comments', $commentCount)
+            Stat::make(__('filament.widgets.stats.comments'), $commentCount)
                 ->icon('heroicon-o-chat-bubble-left-right'),
-            Stat::make('Likes', $likeCount)
+            Stat::make(__('filament.widgets.stats.likes'), $likeCount)
                 ->icon('heroicon-o-heart'),
-            Stat::make('Ratings', $ratingCount)
+            Stat::make(__('filament.widgets.stats.ratings'), $ratingCount)
                 ->icon('heroicon-o-star'),
-            Stat::make('Followers', $followerCount)
+            Stat::make(__('filament.widgets.stats.followers'), $followerCount)
                 ->icon('heroicon-o-user-plus'),
-            Stat::make('Following', $followedCount)
+            Stat::make(__('filament.widgets.stats.following'), $followedCount)
                 ->icon('heroicon-o-user'),
         ];
     }

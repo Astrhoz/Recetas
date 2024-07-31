@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class AdminWidgetUsersChart extends ChartWidget
 {
-    protected static ?string $heading = 'User Growth';
+    protected static ?string $heading = null;
+
+    public function __construct()
+    {
+        static::$heading = __('filament.widgets.user_growth_heading');
+    }
 
     protected function getData(): array
     {
@@ -40,7 +45,7 @@ class AdminWidgetUsersChart extends ChartWidget
             'labels' => array_keys($dates),
             'datasets' => [
                 [
-                    'label' => 'User Growth',
+                    'label' => __('filament.widgets.user_growth_label'),
                     'data' => array_values($userCounts),
                     'borderColor' => 'rgba(75, 192, 192, 1)',
                     'backgroundColor' => 'rgba(75, 192, 192, 0.2)',

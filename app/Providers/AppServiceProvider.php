@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use BezhanSalleh\PanelSwitch\PanelSwitch;
 use Illuminate\Support\ServiceProvider;
 
@@ -37,7 +38,16 @@ class AppServiceProvider extends ServiceProvider
             return (new MailMessage)
                 ->subject('Confirme su dirección de correo electrónico')
                 ->line('Gracias por unirte a Recetero, tu comunidad de recetas de cocina. Para completar tu registro y empezar a disfrutar de nuestras deliciosas recetas, por favor verifica tu dirección de correo electrónico haciendo clic en el botón de abajo.')
-                ->action('Confirmar correo', $url);        
+                ->action('Confirmar correo', $url);
+        });
+
+        LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
+            $switch
+                ->locales(['es','en'])
+                ->flags([
+                    'en' => asset('https://flagicons.lipis.dev/flags/4x3/us.svg'),
+                    'es' => asset('https://flagicons.lipis.dev/flags/4x3/es.svg'),
+                ]);
         });
     }
 }
