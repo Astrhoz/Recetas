@@ -25,6 +25,16 @@ class RatingResource extends Resource
         return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
     }
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.rating.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.rating.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -33,6 +43,8 @@ class RatingResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\TextInput::make('score')
+                            ->label(__('filament.rating.score'))
+                            ->translateLabel()
                             ->required()
                             ->numeric()
                             ->minValue(0)
@@ -46,13 +58,18 @@ class RatingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('score')
+                    ->label(__('filament.rating.score'))
+                    ->translateLabel()
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('recipes.title')
+                    ->label(__('filament.rating.recipe_id'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('recipes.images')
-                    ,
+                    ->label(__('filament.rating.recipe_image'))
+                    ->translateLabel(),
             ])
             ->filters([
                 //
