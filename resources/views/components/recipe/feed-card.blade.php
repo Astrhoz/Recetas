@@ -1,5 +1,3 @@
-@props(['recipe'])
-
 <div class="w-full max-w-md overflow-hidden rounded-lg shadow-lg bg-secondary-100">
     <div class="p-0">
         <img src="{{ asset('storage/' . $recipe->images) }}" width=600

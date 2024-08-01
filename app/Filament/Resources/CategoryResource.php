@@ -19,6 +19,16 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.category.singular'); // Usar traducción para singular
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.category.plural'); // Usar traducción para plural
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -27,11 +37,15 @@ class CategoryResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label(__('filament.category.name')) // Usar traducción para name
+                            ->translateLabel()
                             ->maxLength(255)
                             ->required()
                             ->default(null)
                             ->columnSpanFull(),
                         Forms\Components\Textarea::make('description')
+                            ->label(__('filament.category.description')) // Usar traducción para description
+                            ->translateLabel()
                             ->required()
                             ->columnSpanFull(),
                     ])
@@ -44,16 +58,20 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.category.name')) // Usar traducción para name
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->label(__('filament.category.description')) // Usar traducción para description
                     ->limit(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.category.created_at')) // Usar traducción para created_at
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.category.updated_at')) // Usar traducción para updated_at
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -10,7 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class UserWidgetFollowersChart extends ChartWidget
 {
-    protected static ?string $heading = 'Followers';
+    protected static ?string $heading = null;
+
+    public function __construct()
+    {
+        static::$heading = __('filament.widgets.followers_heading');
+    }
 
     protected function getData(): array
     {
@@ -44,7 +49,7 @@ class UserWidgetFollowersChart extends ChartWidget
             'labels' => array_keys($followerCounts),
             'datasets' => [
                 [
-                    'label' => 'Follower Growth',
+                    'label' => __('filament.widgets.follower_growth_label'),
                     'data' => array_values($followerCounts),
                     'borderColor' => 'rgba(54, 162, 235, 1)',
                     'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
