@@ -25,6 +25,16 @@ class FollowerResource extends Resource
         return parent::getEloquentQuery()->where('followed_id', Auth::user()->id);
     }
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.follower.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.follower.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -33,11 +43,15 @@ class FollowerResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\Select::make('user_id')
+                            ->label(__('filament.follower.user_id'))
+                            ->translateLabel()
                             ->relationship('users', 'name')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Forms\Components\Select::make('followed_id')
+                            ->label(__('filament.follower.followed_id'))
+                            ->translateLabel()
                             ->relationship('followeds', 'name')
                             ->required()
                             ->searchable()
@@ -51,6 +65,8 @@ class FollowerResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('users.name')
+                    ->label(__('filament.follower.user_id'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
             ])

@@ -3,14 +3,18 @@
 namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
-use App\Models\User;
 use App\Models\Recipe;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class AdminWidgetChart extends ChartWidget
 {
-    protected static ?string $heading = 'Recipe Growth';
+    protected static ?string $heading = null;
+
+    public function __construct()
+    {
+        static::$heading = __('filament.widgets.recipe_growth_heading');
+    }
 
     protected function getData(): array
     {
@@ -41,7 +45,7 @@ class AdminWidgetChart extends ChartWidget
             'labels' => array_keys($dates),
             'datasets' => [
                 [
-                    'label' => 'Recipe Growth',
+                    'label' => __('filament.widgets.recipe_growth_label'),
                     'data' => array_values($recipeCounts),
                     'borderColor' => 'rgba(153, 102, 255, 1)',
                     'backgroundColor' => 'rgba(153, 102, 255, 0.2)',

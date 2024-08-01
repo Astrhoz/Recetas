@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-1">
         @foreach ($recipes as $recipe)
         <div class="bg-secondary-100 shadow-md rounded-lg overflow-hidden flex flex-col lg:flex-row">
             <img src="{{ asset('storage/' . $recipe->images) }}" alt="Receta popular" class="w-full lg:w-1/3 h-64 object-cover">

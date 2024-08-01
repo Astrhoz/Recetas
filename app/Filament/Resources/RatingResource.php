@@ -19,6 +19,16 @@ class RatingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.rating.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.rating.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -27,16 +37,22 @@ class RatingResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\TextInput::make('score')
+                            ->label(__('filament.rating.score'))
+                            ->translateLabel()
                             ->required()
                             ->numeric()
                             ->minValue(0)
                             ->maxValue(5),
                         Forms\Components\Select::make('recipe_id')
+                            ->label(__('filament.rating.recipe_id'))
+                            ->translateLabel()
                             ->relationship('recipes', 'title')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Forms\Components\Select::make('user_id')
+                            ->label(__('filament.rating.user_id'))
+                            ->translateLabel()
                             ->relationship('users', 'name')
                             ->required()
                             ->searchable()
@@ -50,19 +66,29 @@ class RatingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('score')
+                    ->label(__('filament.rating.score'))
+                    ->translateLabel()
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('recipes.title')
+                    ->label(__('filament.rating.recipe_id'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('users.name')
+                    ->label(__('filament.rating.user_id'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.rating.created_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.rating.updated_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
