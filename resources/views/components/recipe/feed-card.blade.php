@@ -1,5 +1,3 @@
-@props(['recipe'])
-
 <div class="w-full max-w-md overflow-hidden rounded-lg shadow-lg bg-secondary-100">
     <div class="p-0">
         <img src="{{ asset('storage/' . $recipe->images) }}" width=600
@@ -20,7 +18,7 @@
                     </span>
                 @endif
                 <div>
-                    <h2 class="text-xl font-semibold text-secondary-900">{{ $recipe->users->name }}</h2>
+                    <h4 class="text-xl font-semibold text-secondary-900">{{ $recipe->users->name }}</h4>
                     <p class="text-sm text-muted-foreground text-secondary-900/70">@<span>{{ $recipe->users->name }}</span></p>
                 </div>
             </div>
