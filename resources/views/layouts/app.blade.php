@@ -25,8 +25,6 @@
 </head>
 
 <body class="font-sans antialiased bg-secondary-100/80">
-    <x-banner />
-
     <div class="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
         {{-- Menú lateral --}}
         @include('layouts.includes.app-side-bar')
