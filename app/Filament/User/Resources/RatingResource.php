@@ -20,6 +20,13 @@ class RatingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
+    protected static ?int $navigationSort = 4;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('user_id', Auth::user()->id);

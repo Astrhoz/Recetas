@@ -19,6 +19,13 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    protected static ?int $navigationSort = 5;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.content");
+    }
+
     public static function getModelLabel(): string
     {
         return __('filament.category.singular'); // Usar traducción para singular

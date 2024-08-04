@@ -20,6 +20,13 @@ class FollowerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-plus';
 
+    protected static ?int $navigationSort = 6;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('followed_id', Auth::user()->id);

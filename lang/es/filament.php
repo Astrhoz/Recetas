@@ -100,5 +100,9 @@ return [
         ],
     ],
 
-
+    'groups' => [
+        'interaction' => 'Interacciones',
+        'content' => 'Gestión de contenido',
+        'user' => 'Gestión de usuarios',
+    ],
 ];
