@@ -19,6 +19,23 @@ class LikeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-heart';
 
+    protected static ?int $navigationSort = 8;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.like.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.like.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -27,11 +44,15 @@ class LikeResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\Select::make('recipe_id')
+                            ->label(__('filament.like.recipe_id'))
+                            ->translateLabel()
                             ->relationship('recipes', 'title')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Forms\Components\Select::make('user_id')
+                            ->label(__('filament.like.user_id'))
+                            ->translateLabel()
                             ->relationship('users', 'name')
                             ->required()
                             ->searchable()
@@ -45,14 +66,22 @@ class LikeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('recipes.title')
+                    ->label(__('filament.like.recipe_id'))
+                    ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('users.name')
+                    ->label(__('filament.like.user_id'))
+                    ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.like.created_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.like.updated_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

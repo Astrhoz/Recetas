@@ -25,17 +25,17 @@ class AdminWidgetStats extends BaseWidget
         $ratingCount = Rating::count();
 
         return [
-            Stat::make('Recipes', $recipeCount)
+            Stat::make(__('filament.widgets.stats.recipes'), $recipeCount)
                 ->icon('heroicon-o-book-open'),
-            Stat::make('Categories', $categoryCount)
+            Stat::make(__('filament.widgets.stats.categories'), $categoryCount)
                 ->icon('heroicon-o-tag'),
-            Stat::make('Users', $userCount)
+            Stat::make(__('filament.widgets.stats.users'), $userCount)
                 ->icon('heroicon-o-users'),
-            Stat::make('Likes', $likeCount)
+            Stat::make(__('filament.widgets.stats.likes'), $likeCount)
                 ->icon('heroicon-o-heart'),
-            Stat::make('Ratings', $ratingCount)
+            Stat::make(__('filament.widgets.stats.ratings'), $ratingCount)
                 ->icon('heroicon-o-star'),
-            Stat::make('Comments', $commentCount)
+            Stat::make(__('filament.widgets.stats.comments'), $commentCount)
                 ->icon('heroicon-o-chat-bubble-left-right'),
         ];
     }

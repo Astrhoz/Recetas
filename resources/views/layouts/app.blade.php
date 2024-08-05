@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="application-name" content="{{ config('app.name') }}">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name') }}</title>
@@ -26,8 +25,6 @@
 </head>
 
 <body class="font-sans antialiased bg-secondary-100/80">
-    <x-banner />
-
     <div class="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
         {{-- Menú lateral --}}
         @include('layouts.includes.app-side-bar')

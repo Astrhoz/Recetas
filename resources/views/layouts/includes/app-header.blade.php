@@ -49,11 +49,21 @@
                 <x-slot name="content">
                     <!-- Account Management -->
                     <div class="block px-4 py-2 text-xs text-secondary-400">
-                        {{ __('Manage Account') }}
+                        {{ __('Administrar Cuenta') }}
                     </div>
                     <x-dropdown-link href="{{ route('profile.show') }}">
-                        {{ __('Profile') }}
+                        {{ __('Perfil') }}
                     </x-dropdown-link>
+                    {{-- Redirección del dashboard en función del rol del usuario --}}
+                    @if (auth()->user()->hasRole('super_admin'))
+                        <x-dropdown-link href="/admin">
+                            {{ __('Dashboard') }}
+                        </x-dropdown-link>
+                    @else
+                        <x-dropdown-link href="/user">
+                            {{ __('Dashboard') }}
+                        </x-dropdown-link>
+                    @endif
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-dropdown-link href="{{ route('api-tokens.index') }}">
                             {{ __('API Tokens') }}
@@ -64,7 +74,7 @@
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
                         <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Cerrar Sesión') }}
                         </x-dropdown-link>
                     </form>
                 </x-slot>

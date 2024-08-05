@@ -19,6 +19,23 @@ class FollowerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-plus';
 
+    protected static ?int $navigationSort = 9;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.follower.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.follower.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -27,11 +44,15 @@ class FollowerResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\Select::make('user_id')
+                            ->label(__('filament.follower.user_id'))
+                            ->translateLabel()
                             ->relationship('users', 'name')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Forms\Components\Select::make('followed_id')
+                            ->label(__('filament.follower.followed_id'))
+                            ->translateLabel()
                             ->relationship('followeds', 'name')
                             ->required()
                             ->searchable()
@@ -46,16 +67,24 @@ class FollowerResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('users.name')
+                    ->label(__('filament.follower.user_id'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('followeds.name')
+                    ->label(__('filament.follower.followed_id'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.follower.created_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.follower.updated_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

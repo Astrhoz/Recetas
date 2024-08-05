@@ -20,25 +20,44 @@ class LikeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-heart';
 
+    protected static ?int $navigationSort = 5;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
     }
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.like.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.like.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Forms\Components\Section::make()
-                ->heading('')
-                ->schema([
-                    Forms\Components\Select::make('recipe_id')
-                        ->relationship('recipes', 'title')
-                        ->required()
-                        ->searchable()
-                        ->preload(),
-                ])
-        ]);
+            ->schema([
+                Forms\Components\Section::make()
+                    ->heading('')
+                    ->schema([
+                        Forms\Components\Select::make('recipe_id')
+                            ->label(__('filament.like.recipe_id'))
+                            ->translateLabel()
+                            ->relationship('recipes', 'title')
+                            ->required()
+                            ->searchable()
+                            ->preload(),
+                    ])
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -46,10 +65,13 @@ class LikeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('recipes.title')
+                    ->label(__('filament.like.recipe_id'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('recipes.images')
-                    ,
+                    ->label(__('filament.like.recipe_image'))
+                    ->translateLabel(),
             ])
             ->filters([
                 //

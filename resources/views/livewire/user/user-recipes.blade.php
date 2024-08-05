@@ -9,11 +9,11 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-2">
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
         @foreach ($recipes as $recipe)
-        <div class="bg-secondary-100 shadow-md rounded-lg overflow-hidden flex flex-col sm:flex-row">
-            <img src="{{ asset('storage/' . $recipe->images) }}" alt="Receta popular" class="w-full sm:w-1/3 h-48 object-cover">
-            <div class="p-4 flex flex-col justify-between sm:w-2/3 relative">
+        <div class="bg-secondary-100 shadow-md rounded-lg overflow-hidden flex flex-col lg:flex-row">
+            <img src="{{ asset('storage/' . $recipe->images) }}" alt="Receta popular" class="w-full lg:w-1/3 h-64 object-cover">
+            <div class="p-4 flex flex-col justify-between lg:w-2/3 relative">
                 <div>
                     <h3 class="text-secondary-900 text-xl font-semibold mb-2"> {{ $recipe->title }} </h3>
                     <p class="text-secondary-800 mb-4 font-light">
@@ -21,7 +21,7 @@
                     </p>
                 </div>
                 <div class="text-center mb-4">
-                    <a href="#" class="inline-flex text-sm items-center gap-2 text-secondary-600 underline hover:text-secondary-300">
+                    <a href="{{ route('recipe', $recipe->id) }}" class="inline-flex text-sm items-center gap-2 text-secondary-600 underline hover:text-secondary-300">
                         Ver receta
                     </a>
                 </div>
@@ -34,7 +34,7 @@
                     Eliminar
                 </button>
             </div>
-        </div>           
+        </div>            
         @endforeach
     </div>
 

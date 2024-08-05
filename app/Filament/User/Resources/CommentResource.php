@@ -20,9 +20,26 @@ class CommentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
+    protected static ?int $navigationSort = 3;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.comment.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.comment.plural');
     }
 
     public static function form(Form $form): Form
@@ -32,6 +49,8 @@ class CommentResource extends Resource
                 Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\Textarea::make('content')
+                            ->label(__('filament.comment.content'))
+                            ->translateLabel()
                             ->required()
                             ->columnSpanFull(),
                     ])
@@ -45,12 +64,17 @@ class CommentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('content')
+                    ->label(__('filament.comment.content'))
+                    ->translateLabel()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('recipes.title')
+                    ->label(__('filament.comment.recipe_id'))
+                    ->translateLabel()
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('recipes.images')
-                    ,
+                    ->label(__('filament.comment.recipe_image'))
+                    ->translateLabel(),
             ])
             ->filters([
                 //

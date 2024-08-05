@@ -28,6 +28,7 @@ class UserPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Purple,
             ])
+            ->brandLogo(fn () => view('filament.logo'))
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
             ->pages([

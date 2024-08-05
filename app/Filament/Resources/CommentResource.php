@@ -19,6 +19,23 @@ class CommentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
+    protected static ?int $navigationSort = 6;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.comment.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.comment.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -27,14 +44,20 @@ class CommentResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\Textarea::make('content')
+                            ->label(__('filament.comment.content'))
+                            ->translateLabel()
                             ->required()
                             ->columnSpanFull(),
                         Forms\Components\Select::make('recipe_id')
+                            ->label(__('filament.comment.recipe_id'))
+                            ->translateLabel()
                             ->relationship('recipes', 'title')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Forms\Components\Select::make('user_id')
+                            ->label(__('filament.comment.user_id'))
+                            ->translateLabel()
                             ->relationship('users', 'name')
                             ->required()
                             ->searchable()
@@ -42,7 +65,6 @@ class CommentResource extends Resource
                     ])
                     ->columnSpanFull()
             ]);
-
     }
 
     public static function table(Table $table): Table
@@ -50,16 +72,25 @@ class CommentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('content')
-                    ,
+                    ->label(__('filament.comment.content'))
+                    ->translateLabel(),
                 Tables\Columns\TextColumn::make('recipes.title')
+                    ->label(__('filament.comment.recipe_id'))
+                    ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('users.name')
+                    ->label(__('filament.comment.user_id'))
+                    ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.comment.created_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.comment.updated_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
