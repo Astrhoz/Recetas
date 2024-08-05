@@ -1,4 +1,4 @@
-<header x-data="{ open: false }" class="flex items-center gap-4 border-b border-secondary-200 bg-secondary-100 px-6 lg:h-[60px] relative">
+<header x-data="{ open: false }" class="flex items-center gap-4 border-b border-secondary-200 bg-secondary-100 px-6 lg:h-[60px] relative z-20">
     <div class="flex-1 flex items-center w-full py-2">
         <div class="relative text-secondary-900 w-full md:w-2/3 lg:w-1/3">
             <x-bytesize-search class="absolute h-4 w-4 left-2.5 top-2.5" />
@@ -9,13 +9,13 @@
     <nav class="hidden sm:flex items-center gap-4">
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex h-[60px]">
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-nav-link href="{{ url('/') }}" :active="request()->is('/')">
                 {{ __('Inicio') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
+            <x-nav-link href="{{ route('my-recipes') }}" :active="request()->routeIs('my-recipes')">
                 {{ __('Mis Recetas') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('saved-recipes') }}" :active="request()->routeIs('saved-recipes')">
+            <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Mi Almacén') }}
             </x-nav-link>
         </div>
@@ -49,11 +49,21 @@
                 <x-slot name="content">
                     <!-- Account Management -->
                     <div class="block px-4 py-2 text-xs text-secondary-400">
-                        {{ __('Manage Account') }}
+                        {{ __('Administrar Cuenta') }}
                     </div>
                     <x-dropdown-link href="{{ route('profile.show') }}">
-                        {{ __('Profile') }}
+                        {{ __('Perfil') }}
                     </x-dropdown-link>
+                    {{-- Redirección del dashboard en función del rol del usuario --}}
+                    @if (auth()->user()->hasRole('super_admin'))
+                        <x-dropdown-link href="/admin">
+                            {{ __('Dashboard') }}
+                        </x-dropdown-link>
+                    @else
+                        <x-dropdown-link href="/user">
+                            {{ __('Dashboard') }}
+                        </x-dropdown-link>
+                    @endif
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-dropdown-link href="{{ route('api-tokens.index') }}">
                             {{ __('API Tokens') }}
@@ -64,7 +74,7 @@
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
                         <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Cerrar Sesión') }}
                         </x-dropdown-link>
                     </form>
                 </x-slot>
@@ -88,13 +98,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden w-full absolute left-0 top-full bg-secondary-100">
         <div class="pt-2 pb-3 space-y-1 bg-secondary-50/40 border-t border-secondary-200 text-base font-medium">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link href="{{ url('/') }}" :active="request()->is('/')">
                 {{ __('Inicio') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('recipes') }}" :active="request()->routeIs('recipes')">
+            <x-responsive-nav-link href="{{ route('my-recipes') }}" :active="request()->routeIs('my-recipes')">
                 {{ __('Mis Recetas') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('saved-recipes') }}" :active="request()->routeIs('saved-recipes')">
+            <x-responsive-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
                 {{ __('Mi Almacén') }}
             </x-responsive-nav-link>
         </div>
@@ -116,7 +126,7 @@
             <div class="mt-3 space-y-1 text-sm">
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
@@ -127,7 +137,7 @@
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
                     <x-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar Sesión') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

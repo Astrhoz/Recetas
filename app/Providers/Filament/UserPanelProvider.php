@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -33,9 +34,9 @@ class UserPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/User/Widgets'), for: 'App\\Filament\\User\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+                \App\Filament\User\Widgets\UserWidgetStats::class,
+                \App\Filament\User\Widgets\UserWidgetFollowersChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -53,6 +54,11 @@ class UserPanelProvider extends PanelProvider
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+            ])
+            ->navigationItems([
+                NavigationItem::make('Home')
+                    ->url(fn (): string => url('/'))
+                    ->icon('heroicon-o-globe-alt')
             ]);
     }
 }

@@ -1,19 +1,19 @@
-<x-validation-errors class="mb-4" />
-
 @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
         {{ session('status') }}
     </div>
 @endif
 
-<form method="POST" action="{{ route('login') }}"> 
-    @csrf  
+<form method="POST" action="{{ route('login') }}">
+    @csrf
 
     <div class="mb-10 ">
         <h2 class="text-3xl font-medium text-secondary">
-            <strong>Inicia sesión con tu cuenta</strong>
+            <strong>Inicia sesión en tu cuenta</strong>
         </h2>
     </div>
+
+    <x-validation-errors class="mb-4" />
 
     <div class="space-y-2">
         <x-label class="text-secondary/70" for="email" value="{{ __('Email') }}" />
@@ -46,3 +46,5 @@
         </x-button>
     </div>
 </form>
+
+

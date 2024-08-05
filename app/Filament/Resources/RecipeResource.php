@@ -19,6 +19,16 @@ class RecipeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.recipe.singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.recipe.plural');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -27,49 +37,57 @@ class RecipeResource extends Resource
                     ->heading('')
                     ->schema([
                         Forms\Components\TextInput::make('title')
+                            ->label(__('filament.recipe.title'))
+                            ->translateLabel()
                             ->required()
                             ->maxLength(255)
                             ->columnSpanFull(),
 
                         Forms\Components\Textarea::make('description')
+                            ->label(__('filament.recipe.description'))
+                            ->translateLabel()
                             ->required()
                             ->columnSpanFull(),
 
                         Forms\Components\Repeater::make('ingredients')
                             ->relationship()
+                            ->label(__('filament.recipe.ingredients'))
+                            ->translateLabel()
                             ->required()
                             ->columnSpanFull()
                             ->schema([
                                 Forms\Components\TextInput::make('name')
+                                    ->label(__('filament.recipe.ingredient_name'))
                                     ->required()
                                     ->maxLength(255),
 
-                                Forms\Components\Textarea::make('description')
-                                    ->required(),
-
                                 Forms\Components\TextInput::make('quantity')
+                                    ->label(__('filament.recipe.quantity'))
                                     ->required()
                                     ->numeric(),
 
                                 Forms\Components\TextInput::make('unit_of_measurement')
+                                    ->label(__('filament.recipe.unit_of_measurement'))
                                     ->required(),
                             ])
-                            ->columns(4),
+                            ->columns(3),
 
                         Forms\Components\RichEditor::make('steps')
+                            ->label(__('filament.recipe.steps'))
+                            ->translateLabel()
                             ->required()
                             ->fileAttachmentsDirectory('steps-recipes')
                             ->columnSpanFull(),
 
                         Forms\Components\Textarea::make('tips')
+                            ->label(__('filament.recipe.tips'))
+                            ->translateLabel()
                             ->required()
                             ->columnSpanFull(),
 
-                        Forms\Components\TextInput::make('amount_of_ingredients')
-                            ->required()
-                            ->numeric(),
-
                         Forms\Components\Select::make('categories')
+                            ->label(__('filament.recipe.categories'))
+                            ->translateLabel()
                             ->required()
                             ->multiple()
                             ->relationship('categories', 'name')
@@ -77,12 +95,16 @@ class RecipeResource extends Resource
                             ->preload(),
 
                         Forms\Components\FileUpload::make('images')
+                            ->label(__('filament.recipe.images'))
+                            ->translateLabel()
                             ->required()
                             ->image()
                             ->imageEditor()
                             ->directory('recipes'),
 
                         Forms\Components\Select::make('user_id')
+                            ->label(__('filament.recipe.user_id'))
+                            ->translateLabel()
                             ->relationship('users', 'name')
                             ->required()
                             ->searchable()
@@ -92,26 +114,36 @@ class RecipeResource extends Resource
             ]);
     }
 
-
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament.recipe.title'))
+                    ->translateLabel()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->label(__('filament.recipe.description'))
+                    ->translateLabel()
                     ->limit(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('categories.name')
-                    ,
+                    ->label(__('filament.recipe.categories'))
+                    ->translateLabel(),
                 Tables\Columns\TextColumn::make('users.name')
+                    ->label(__('filament.recipe.user_id'))
+                    ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.recipe.created_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament.recipe.updated_at'))
+                    ->translateLabel()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
