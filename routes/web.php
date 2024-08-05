@@ -40,15 +40,6 @@ Route::middleware([
         return view('my-recipes'); // Renderiza la vista que contiene el componente Livewire
     })->name('my-recipes');
 
-    // Endpoint para obtener las recetas del usuario autenticado
-    Route::get('/usuario-recetas', function () {
-        // Obtén las recetas del usuario autenticado
-        $recipes = Recipe::where('user_id', auth()->id())->get();
-
-        // Devuelve las recetas como JSON
-        return response()->json($recipes);
-    })->name('usuario-recetas');
-
     Route::get('/my-recipes/new-recipe', function () {
         return view('new-recipe'); // Renderiza la vista que contiene el componente Livewire
     })->name('new-recipe');
@@ -71,11 +62,20 @@ Route::get('/recetas', function () {
     return response()->json($recipes);
 })->name('recetas');
 
-// Endpoint para obtener todas las recetas del sitio
+// Endpoint para obtener todas las categorías del sitio
 Route::get('/categorias', function () {
-    // Obtén las recetas de todo el sitio
+    // Obtén las categorías de todo el sitio
     $recipes = Category::all();
+
+    // Devuelve las categorías como JSON
+    return response()->json($recipes);
+})->name('categorias');
+
+// Endpoint para obtener las recetas del usuario autenticado
+Route::get('/usuario-recetas/{usuario}', function ($userId) {
+    // Obtén las recetas del usuario autenticado
+    $recipes = Recipe::where('user_id', $userId)->get();
 
     // Devuelve las recetas como JSON
     return response()->json($recipes);
-})->name('categorias');
+})->name('usuario-recetas');
