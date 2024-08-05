@@ -21,7 +21,7 @@
                     </p>
                 </div>
                 <div class="text-center mb-4">
-                    <a href="#" class="inline-flex text-sm items-center gap-2 text-secondary-600 underline hover:text-secondary-300">
+                    <a href="{{ route('recipe', $recipe->id) }}" class="inline-flex text-sm items-center gap-2 text-secondary-600 underline hover:text-secondary-300">
                         Ver receta
                     </a>
                 </div>
