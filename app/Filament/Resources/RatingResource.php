@@ -19,6 +19,13 @@ class RatingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
+    protected static ?int $navigationSort = 7;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
     public static function getModelLabel(): string
     {
         return __('filament.rating.singular');

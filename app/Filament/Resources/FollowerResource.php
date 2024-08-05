@@ -19,6 +19,13 @@ class FollowerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-plus';
 
+    protected static ?int $navigationSort = 9;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
     public static function getModelLabel(): string
     {
         return __('filament.follower.singular');
