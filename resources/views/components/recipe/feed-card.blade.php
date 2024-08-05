@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="px-6 pb-6">
-        <button class="w-full text-secondary/70 hover:underline">Ver más</button>
+        <a href="{{ route('recipe', $recipe->id) }}" class="w-full text-secondary/70 hover:underline">Ver más</a>
     </div>
     <div class="bg-secondary-50/40 px-6 py-4">
         <h3 class="text-lg text-secondary/70 font-semibold mb-2">Categorías</h3>
