@@ -17,26 +17,20 @@
     <section class="py-12 px-6">
         <div id="explore" class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
             <!-- Receta Destacada -->
-            <div>
-                <img src="https://image.lexica.art/full_webp/124b0f77-5310-4c3b-93f5-eae8e05308e3"
-                    alt="Receta Destacada" height="550" width="310" class="w-full h-auto rounded-lg object-cover">
-            </div>
+            <img src="{{ asset('storage/' . $recipes[1]->images) }}" alt="Receta Destacada" class="w-full max-h-80 rounded-lg object-cover">
             <div class="space-y-4">
-                <div class="inline-block bg-secondary text-primary px-3 py-1 rounded-md text-sm font-semibold">Receta
-                    Destacada</div>
-                <h2 class="font-playwrite text-secondary text-3xl font-bold">Título Receta Destacada</h2>
-                <p class="text-secondary">
-                    Indulge in this delectable creamy garlic shrimp pasta, a perfect balance of flavors and textures.
-                    Savor
-                    the tender shrimp, al dente pasta, and a rich, velvety sauce in every bite.
-                </p>
-                <a href="#explore"
-                    class="inline-flex items-center gap-2 bg-secondary text-primary px-4 py-2 rounded-md hover:bg-secondary-900">
+                <div class="inline-block bg-secondary text-primary px-3 py-1 rounded-md text-sm font-semibold">
+                    Receta Destacada
+                </div>
+                <h2 class="font-playwrite text-secondary text-3xl font-bold">{{ $recipes[1]->title }}</h2>
+                <p class="text-secondary">{{ $recipes[1]->description }}</p>
+                <a href="{{ route('recipe', $recipes[1]->id) }}"
+                   class="inline-flex items-center gap-2 bg-secondary text-primary px-4 py-2 rounded-md hover:bg-secondary-900">
                     Ver receta
                     <x-bytesize-arrow-right class="h-4 w-4 text-primary" />
                 </a>
             </div>
-        </div>
+        </div>        
 
         <!-- Buscador de recetas -->
         <div class="max-w-5xl mx-auto mt-10">
@@ -44,6 +38,7 @@
                 <h2 class="text-secondary text-2xl font-bold">Buscar Recetas</h2>
             </div>
             <div class="text-secondary-900">
+                <x-bytesize-search class="absolute h-4 w-4 left-2.5 top-2.5" />
                 <input type="text" placeholder="Ingresa lo que quieres encontrar..."
                     class="w-full bg-secondary-200 border-none py-3 pl-12 pr-4 rounded-md focus:ring-2 focus:ring-primary-200 placeholder:text-secondary-300" />
             </div>

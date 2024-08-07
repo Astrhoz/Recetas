@@ -15,14 +15,6 @@ Route::get('/', function (Request $request) {
     return app(HomeController::class)($request);
 });
 
-Route::get('/recipe/{recipe}', function ($recipeId) {
-    // Encuentra la receta o muestra un error 404 si no se encuentra
-    $recipe = Recipe::findOrFail($recipeId);
-
-    // Devuelve la vista y la receta
-    return view('recipe', compact('recipe'));
-})->name('recipe');
-
 Route::get('/login', function () {
     return view('auth.auth');
 })->name('login');
@@ -51,6 +43,14 @@ Route::middleware([
         // Devuelve la vista y la receta
         return view('edit-recipe', compact('recipe'));
     })->name('edit-recipe');
+
+    Route::get('/recipe/{recipe}', function ($recipeId) {
+        // Encuentra la receta o muestra un error 404 si no se encuentra
+        $recipe = Recipe::findOrFail($recipeId);
+    
+        // Devuelve la vista y la receta
+        return view('recipe', compact('recipe'));
+    })->name('recipe');
 });
 
 // Endpoint para obtener todas las recetas del sitio

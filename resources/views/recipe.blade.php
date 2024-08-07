@@ -3,5 +3,5 @@
     <x-slot name="title">
         Receta #{{ $recipe->id }}
     </x-slot>
-    @livewire('detail-recipe', ['record' => $recipe])
+    @livewire('recipes.detail-recipe', ['recipe' => $recipe])
 </x-app-layout>
