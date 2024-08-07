@@ -1,11 +1,5 @@
 <header x-data="{ open: false }" class="flex items-center gap-4 border-b border-secondary-200 bg-secondary-100 px-6 lg:h-[60px] relative z-20">
-    <div class="flex-1 flex items-center w-full py-2">
-        <div class="relative text-secondary-900 w-full md:w-2/3 lg:w-1/3">
-            <x-bytesize-search class="absolute h-4 w-4 left-2.5 top-2.5" />
-            <input type="text" placeholder="Buscar recetas..."
-                class="w-full bg-secondary-200 shadow-none border-none pl-8 pr-4 rounded-md focus:ring-2 focus:ring-primary-200 placeholder:text-secondary-300 h-9" />
-        </div>
-    </div>
+    @include('partials.search-box')
     <nav class="hidden sm:flex items-center gap-4">
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex h-[60px]">
