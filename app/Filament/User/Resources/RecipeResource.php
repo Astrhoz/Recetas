@@ -20,6 +20,13 @@ class RecipeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
+    protected static ?int $navigationSort = 2;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.content");
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('user_id', Auth::user()->id);

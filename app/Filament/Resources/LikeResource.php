@@ -19,6 +19,13 @@ class LikeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-heart';
 
+    protected static ?int $navigationSort = 8;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.interaction");
+    }
+
     public static function getModelLabel(): string
     {
         return __('filament.like.singular');
