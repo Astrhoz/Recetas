@@ -122,6 +122,16 @@
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Perfil') }}
                 </x-responsive-nav-link>
+                {{-- Redirección del dashboard en función del rol del usuario --}}
+                @if (auth()->user()->hasRole('super_admin'))
+                    <x-responsive-nav-link href="/admin">
+                        {{ __('Dashboard') }}
+                    </x-responsive-nav-link>
+                @else
+                    <x-responsive-nav-link href="/user">
+                        {{ __('Dashboard') }}
+                    </x-responsive-nav-link>
+                @endif
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}

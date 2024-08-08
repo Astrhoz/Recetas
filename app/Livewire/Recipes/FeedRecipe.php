@@ -11,6 +11,8 @@ class FeedRecipe extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'tailwind';
+
     public $search = '';
 
     protected $queryString = ['search'];
