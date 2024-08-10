@@ -7,6 +7,7 @@ use App\Livewire\Recipes\CreateRecipe;
 use App\Livewire\Recipes\EditRecipe;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Filament\Pages\RecipesReport;
 
 Route::get('/', function (Request $request) {
     if (auth()->check()) {
@@ -79,3 +80,5 @@ Route::get('/usuario-recetas/{usuario}', function ($userId) {
     // Devuelve las recetas como JSON
     return response()->json($recipes);
 })->name('usuario-recetas');
+
+Route::get('/recipes-report/pdf/{month}', [RecipesReport::class, 'generatePdf'])->name('recipes-report.pdf');

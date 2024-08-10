@@ -104,5 +104,11 @@ return [
         'interaction' => 'Interactions',
         'content' => 'Content management',
         'user' => 'User management',
+        'report' => 'Reports',
+    ],
+
+    'pages' => [
+        'recipe' => 'Monthly Recipes',
+
     ],
 ];
