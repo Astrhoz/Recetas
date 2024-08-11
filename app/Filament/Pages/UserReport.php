@@ -111,17 +111,24 @@ class UserReport extends Page
             abort(404);
         }
 
+        // Obtener el nombre y correo del usuario
+        $userName = DB::table('users')->where('id', $this->userId)->value('name');
+        $userMail = DB::table('users')->where('id', $this->userId)->value('email');
+
+        // Reemplazar espacios y caracteres especiales en el nombre del usuario para que sea válido en un nombre de archivo
+        $safeUserName = preg_replace('/[^A-Za-z0-9\-]/', '_', $userName);
+
         $userStats = $this->getUserStats();
         $recipes = $this->getUserRecipes();
 
         $pdf = Pdf::loadView('filament.pages.user-report-pdf', [
             'userStats' => $userStats,
             'recipes' => $recipes,
-            'userName' => DB::table('users')->where('id', $this->userId)->value('name'),
-            'userMail' => DB::table('users')->where('id', $this->userId)->value('email'),
+            'userName' => $userName,
+            'userMail' => $userMail,
         ]);
 
-        return $pdf->download('reporte_usuario_' . $this->userId . '.pdf');
+        return $pdf->download('Reporte_Usuario_' . $safeUserName . '.pdf');
     }
 
 

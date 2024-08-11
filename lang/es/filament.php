@@ -110,5 +110,6 @@ return [
     'pages' => [
         'recipe' => 'Recetas Mensuales',
         'user' => 'Reporte de Usuario',
+        'category' => 'Reporte de Categoría',
     ],
 ];

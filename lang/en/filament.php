@@ -110,5 +110,6 @@ return [
     'pages' => [
         'recipe' => 'Monthly Recipes',
         'user' => 'User Report',
+        'category' => 'Category Report',
     ],
 ];
