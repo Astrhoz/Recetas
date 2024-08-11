@@ -109,6 +109,6 @@ return [
 
     'pages' => [
         'recipe' => 'Recetas Mensuales',
-
+        'user' => 'Reporte de Usuario',
     ],
 ];

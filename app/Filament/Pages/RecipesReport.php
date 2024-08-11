@@ -10,7 +10,7 @@ use Filament\Forms\Components\Select;
 
 class RecipesReport extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
     protected static string $view = 'filament.pages.recipes-report';
 
     protected static ?int $navigationSort = 10;
