@@ -104,5 +104,12 @@ return [
         'interaction' => 'Interacciones',
         'content' => 'Gestión de contenido',
         'user' => 'Gestión de usuarios',
+        'report' => 'Reportes',
+    ],
+
+    'pages' => [
+        'recipe' => 'Recetas Mensuales',
+        'user' => 'Reporte de Usuario',
+        'category' => 'Reporte de Categoría',
     ],
 ];
