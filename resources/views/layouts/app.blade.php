@@ -18,9 +18,9 @@
             display: none !important;
         }
     </style>
-    
+
     @filamentStyles
-    
+
     @vite('resources/css/app.css')
 </head>
 
@@ -40,10 +40,17 @@
                 <div
                     class="w-full bg-secondary-50 py-3 px-4 flex items-center justify-between rounded-md shadow-md sticky top-0 z-10">
                     <h1 class="text-lg text-secondary-900 font-semibold">{{ $title ?? 'Título de la Pestaña' }}</h1>
-                    <a href="{{ route('new-recipe') }}"
-                        class="bg-secondary-800 text-primary text-sm p-2 rounded hover:bg-secondary-900 hover:cursor-pointer">
-                        Crear Receta
-                    </a>
+                    @if (request()->routeIs('new-recipe'))
+                        <a href="{{ url('/') }}"
+                            class="bg-red-500/90 text-red-100 text-sm p-2 rounded hover:bg-red-600/90 hover:cursor-pointer">
+                            Cancelar
+                        </a>
+                    @else
+                        <a href="{{ route('new-recipe') }}"
+                            class="bg-secondary-800 text-primary text-sm p-2 rounded hover:bg-secondary-900 hover:cursor-pointer">
+                            Crear Receta
+                        </a>
+                    @endif
                 </div>
                 {{ $slot }}
             </main>
@@ -54,7 +61,7 @@
 
 
     @filamentScripts
-    
+
     @vite('resources/js/app.js')
 </body>
 
