@@ -3,15 +3,31 @@
 namespace App\Livewire\Recipes;
 
 use Livewire\Component;
+use Livewire\Attributes\Computed;
+use Livewire\WithPagination;
 use App\Models\Recipe;
 
 class FeedRecipe extends Component
 {
-    public $recipes;
+    use WithPagination;
 
-    public function mount()
+    public $search = '';
+
+    protected $queryString = ['search'];
+
+    protected $listeners = ['search' => 'updateSearch'];
+
+    public function updateSearch($search)
     {
-        $this->recipes = Recipe::all();
+        $this->search = $search;
+    }
+
+    #[Computed()]
+    public function recipes()
+    {
+        return Recipe::orderBy('created_at', 'desc')
+        ->where('title', 'like', "%{$this->search}%")
+        ->paginate(1);
     }
 
     public function render()

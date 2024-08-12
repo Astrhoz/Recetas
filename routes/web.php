@@ -7,6 +7,9 @@ use App\Livewire\Recipes\CreateRecipe;
 use App\Livewire\Recipes\EditRecipe;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Filament\Pages\RecipesReport;
+use App\Filament\Pages\UserReport;
+use App\Filament\Pages\CategoriesReport;
 
 Route::get('/', function (Request $request) {
     if (auth()->check()) {
@@ -14,14 +17,6 @@ Route::get('/', function (Request $request) {
     }
     return app(HomeController::class)($request);
 });
-
-Route::get('/recipe/{recipe}', function ($recipeId) {
-    // Encuentra la receta o muestra un error 404 si no se encuentra
-    $recipe = Recipe::findOrFail($recipeId);
-
-    // Devuelve la vista y la receta
-    return view('recipe', compact('recipe'));
-})->name('recipe');
 
 Route::get('/login', function () {
     return view('auth.auth');
@@ -51,6 +46,14 @@ Route::middleware([
         // Devuelve la vista y la receta
         return view('edit-recipe', compact('recipe'));
     })->name('edit-recipe');
+
+    Route::get('/recipe/{recipe}', function ($recipeId) {
+        // Encuentra la receta o muestra un error 404 si no se encuentra
+        $recipe = Recipe::findOrFail($recipeId);
+    
+        // Devuelve la vista y la receta
+        return view('recipe', compact('recipe'));
+    })->name('recipe');
 });
 
 // Endpoint para obtener todas las recetas del sitio
@@ -79,3 +82,9 @@ Route::get('/usuario-recetas/{usuario}', function ($userId) {
     // Devuelve las recetas como JSON
     return response()->json($recipes);
 })->name('usuario-recetas');
+
+Route::get('/recipes-report/pdf/{month}', [RecipesReport::class, 'generatePdf'])->name('recipes-report.pdf');
+
+Route::get('/user-report/pdf/{userId}', [UserReport::class, 'generatePdf'])->name('user-report.pdf');
+
+Route::get('/categories-report/pdf/{categoryId}', [CategoriesReport::class, 'generatePdf'])->name('categories-report.pdf');

@@ -35,8 +35,8 @@
             </div>
         </div>
     </div>
-    <div class="px-6 pb-6">
-        <a href="{{ route('recipe', $recipe->id) }}" class="w-full text-secondary/70 hover:underline">Ver más</a>
+    <div class="px-6 pb-6 flex justify-center">
+        <a href="{{ route('recipe', $recipe->id) }}" class="text-secondary-900/70 hover:underline">Ver más</a>
     </div>
     <div class="bg-secondary-50/40 px-6 py-4">
         <h3 class="text-lg text-secondary/70 font-semibold mb-2">Categorías</h3>

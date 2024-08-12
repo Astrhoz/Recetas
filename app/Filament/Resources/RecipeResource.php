@@ -19,6 +19,13 @@ class RecipeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
+    protected static ?int $navigationSort = 4;
+
+    public static function getNavigationGroup(): string
+    {
+        return __("filament.groups.content");
+    }
+
     public static function getModelLabel(): string
     {
         return __('filament.recipe.singular');
