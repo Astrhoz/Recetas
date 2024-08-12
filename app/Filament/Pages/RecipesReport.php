@@ -35,9 +35,8 @@ class RecipesReport extends Page
 
     public function mount()
     {
-        // Valor por defecto, el mes actual
-        $this->month = now()->format('Y-m');
-        $this->updateRecipeData();
+        $this->month = null;
+        $this->recipes = collect();
     }
 
     protected function getFormSchema(): array
@@ -46,13 +45,12 @@ class RecipesReport extends Page
             Select::make('month')
                 ->label('Seleccionar mes')
                 ->options($this->getMonthsOptions())
-                ->default($this->month) // Asegúrate de que $this->month no sea un valor vacío
+                ->searchable()
                 ->reactive()
                 ->afterStateUpdated(fn ($state) => $this->updateRecipeData($state))
-                ->selectablePlaceholder(false),
+                ->selectablePlaceholder(false)
         ];
     }
-
 
     public function updateRecipeData($month = null)
     {
@@ -62,6 +60,10 @@ class RecipesReport extends Page
 
     public function getRecipes()
     {
+        if (!$this->month) {
+            return collect(); // Retornar colección vacía si no hay mes seleccionado
+        }
+
         return DB::table('recipes as r')
             ->leftJoin('users as u', 'r.user_id', '=', 'u.id')
             ->leftJoin('likes as l', 'r.id', '=', 'l.recipe_id')
