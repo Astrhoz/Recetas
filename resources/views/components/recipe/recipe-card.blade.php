@@ -7,8 +7,9 @@
         <p class="text-primary mb-4 font-extralight">
             {{ \Illuminate\Support\Str::limit($recipe->description, 100) }}
         </p>
-        <a href="{{ route('recipe', $recipe->id) }}" class="inline-flex items-center gap-2 bg-secondary-100/80 text-secondary px-4 py-2 rounded-md hover:bg-secondary-900 hover:text-primary">
+        <a href="{{ route('recipe', $recipe->id) }}" class="inline-flex items-center gap-2 bg-primary text-secondary px-4 py-2 rounded-md hover:bg-secondary-900 hover:text-primary">
             Ver receta
+            <x-bytesize-arrow-right class="h-4 w-4 text-secondary hover:text-primary" />
         </a>
     </div>
 </div>
