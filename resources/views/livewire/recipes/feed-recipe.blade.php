@@ -8,5 +8,11 @@
             </div>
         @endforelse
     </div>
-    <div class="my-3">{{$this->recipes->links()}}</div>
+    <div class="my-3">{{$this->recipes->onEachSide(1)->links()}}</div>
 </div>
+
+<script>
+    window.addEventListener('refresh-page', event => {
+       window.location.reload(false); 
+    })
+</script>

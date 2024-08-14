@@ -1,4 +1,4 @@
-<nav class="bg-secondary w-full fixed p-5 md:flex md:items-center md:justify-between text-primary shadow">
+<nav class="bg-secondary w-full fixed p-5 md:flex md:items-center md:justify-between text-primary shadow z-10">
     <div class="flex justify-between items-center">
         <a href="{{ url('/') }}">
             <x-logo class="h-14"/>
@@ -13,7 +13,6 @@
     <div>
         <ul id="nav-menu" class="md:flex -z-10 md:items-center md:static absolute bg-secondary w-full left-0 md:w-auto md:py-0 top-[-400px] md:pl-0 pl-7 text-nowrap">
             <li class="mx-4 my-6 md:my-0"><a href="#about" class="text-md hover:text-lg duration-300">Acerca de</a></li>
-            <li class="mx-4 my-6 md:my-0"><a href="#explore" class="text-md hover:text-lg duration-300">Explorar</a></li>
             <li class="mx-4 my-6 md:my-0"><a href="#categories" class="text-md hover:text-lg duration-300">Categorias</a>
             </li>
             <li class="mx-4 my-6 md:my-0"><a href="#cards" class="text-md hover:text-lg duration-300">Tendencias</a></li>
