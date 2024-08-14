@@ -37,7 +37,7 @@
                 </x-side-nav-link>
 
                 {{-- Usuarios a los que está siguiendo --}}
-                <x-side-nav-link href="{{ route('new-recipe') }}">
+                <x-side-nav-link href="{{ route('following') }}" :active="(request()->routeIs('following')) || (request()->routeIs('followers'))">
                     <x-bytesize-user class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Siguiendo') }}
                 </x-side-nav-link>
@@ -59,7 +59,7 @@
         <x-bytesize-book class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
     </x-side-nav-link>
 
-    <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
+    <x-side-nav-link href="{{ route('following') }}" :active="request()->routeIs('following') || (request()->routeIs('followers'))">
         <x-bytesize-user class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
     </x-side-nav-link>
 </div>
