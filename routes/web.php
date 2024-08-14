@@ -54,6 +54,16 @@ Route::middleware([
         // Devuelve la vista y la receta
         return view('recipe', compact('recipe'));
     })->name('recipe');
+
+    Route::get('/following', function () {
+        // Devuelve la vista y la receta
+        return view('follows');
+    })->name('following');
+
+    Route::get('/followers', function () {
+        // Devuelve la vista y la receta
+        return view('follows');
+    })->name('followers');
 });
 
 // Endpoint para obtener todas las recetas del sitio

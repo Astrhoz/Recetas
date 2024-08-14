@@ -1,7 +1,9 @@
 <div x-data="{
-    query: '{{request('search', '')}}',
+    query: '{{ request('search', '') }}',
     search() {
-        this.$dispatch('search', { search: this.query });
+        if (this.query.trim() !== '') {
+            window.location.href = '/?search=' + encodeURIComponent(this.query);
+        }
     }
 }" id="search-box" class="flex-1 items-center w-full py-2">
     <div class="relative text-secondary-900 w-[45vw] lg:w-[20vw] sm:w-[25vw]">
