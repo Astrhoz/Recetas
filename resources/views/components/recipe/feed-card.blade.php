@@ -3,24 +3,27 @@
         <img src="{{ asset('storage/' . $recipe->images) }}" width=600
         height=400 alt="Social Media Content" class="object-cover w-full h-56" />
         <div class="p-6 space-y-4">
-            <div class="flex items-center gap-4">
-                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                    <!-- Foto de perfil del usuario -->
-                    <div class="flex text-sm border-2 border-transparent rounded-full bg-secondary-300 transition">
-                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $recipe->users->profile_photo_url }}" alt="{{ $recipe->users->name }}" />
-                    </div>
-                @else    
-                    <!-- Nombre del usuario en lugar de foto de perfil -->
-                    <span class="inline-flex rounded-md">
-                        <div class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-secondary-500 bg-white">
-                            {{ $recipe->user->name }}
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                        <!-- Foto de perfil del usuario -->
+                        <div class="flex text-sm border-2 border-transparent rounded-full bg-secondary-300 transition">
+                            <img class="h-8 w-8 rounded-full object-cover" src="{{ $recipe->users->profile_photo_url }}" alt="{{ $recipe->users->name }}" />
                         </div>
-                    </span>
-                @endif
-                <div>
-                    <h4 class="text-xl font-semibold text-secondary-900">{{ $recipe->users->name }}</h4>
-                    <p class="text-sm text-muted-foreground text-secondary-900/70">@<span>{{ $recipe->users->name }}</span></p>
+                    @else    
+                        <!-- Nombre del usuario en lugar de foto de perfil -->
+                        <span class="inline-flex rounded-md">
+                            <div class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-secondary-500 bg-white">
+                                {{ $recipe->users->name }}
+                            </div>
+                        </span>
+                    @endif
+                    <div>
+                        <h4 class="text-xl font-semibold text-secondary-900">{{ $recipe->users->name }}</h4>
+                        <p class="text-sm text-muted-foreground text-secondary-900/70">@<span>{{ $recipe->users->name }}</span></p>
+                    </div>
                 </div>
+                <livewire:follows.follow-user :toFollowUserId="$recipe->users->id" wire:key="buttom-{{ $recipe->id }}" />
             </div>
             <div>
                 <h2 class="text-2xl font-bold text-secondary-900">{{ $recipe->title }}</h2>

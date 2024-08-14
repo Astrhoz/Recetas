@@ -32,18 +32,6 @@
             </div>
         </div>        
 
-        <!-- Buscador de recetas -->
-        <div class="max-w-5xl mx-auto mt-10">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-secondary text-2xl font-bold">Buscar Recetas</h2>
-            </div>
-            <div class="text-secondary-900">
-                <x-bytesize-search class="absolute h-4 w-4 left-2.5 top-2.5" />
-                <input type="text" placeholder="Ingresa lo que quieres encontrar..."
-                    class="w-full bg-secondary-200 border-none py-3 pl-12 pr-4 rounded-md focus:ring-2 focus:ring-primary-200 placeholder:text-secondary-300" />
-            </div>
-        </div>
-
         <!-- Categorías -->
         <div id="categories" class="max-w-5xl mx-auto mt-10">
             <div class="flex items-center justify-between mb-6">
@@ -61,7 +49,7 @@
         <div id="cards" class="max-w-5xl mx-auto mt-10">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-secondary text-2xl font-bold">Recetas Populares</h2>
-                <a href="#cards" class="text-secondary hover:text-secondary-700">Ver todas</a>
+                <a href="{{ route('login') }}" class="text-secondary hover:text-secondary-700">Ver todas</a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 @foreach ($recipes as $recipe)
