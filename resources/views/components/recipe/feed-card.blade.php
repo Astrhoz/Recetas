@@ -1,4 +1,5 @@
-<div class="w-full max-w-md overflow-hidden rounded-lg shadow-lg bg-secondary-100">
+<div class="relative w-full max-w-md overflow-hidden rounded-lg shadow-lg bg-secondary-100 group">
+    <livewire:likes.like-recipe :recipeId="$recipe->id" wire:key="like-recipe-{{ $recipe->id }}" />
     <div class="p-0">
         <img src="{{ asset('storage/' . $recipe->images) }}" width=600
         height=400 alt="Social Media Content" class="object-cover w-full h-56" />
@@ -10,7 +11,7 @@
                         <div class="flex text-sm border-2 border-transparent rounded-full bg-secondary-300 transition">
                             <img class="h-8 w-8 rounded-full object-cover" src="{{ $recipe->users->profile_photo_url }}" alt="{{ $recipe->users->name }}" />
                         </div>
-                    @else    
+                    @else
                         <!-- Nombre del usuario en lugar de foto de perfil -->
                         <span class="inline-flex rounded-md">
                             <div class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-secondary-500 bg-white">
