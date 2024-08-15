@@ -64,6 +64,14 @@ Route::middleware([
         // Devuelve la vista y la receta
         return view('follows');
     })->name('followers');
+
+    Route::get('/most-liked', function () {
+        return view('most-liked'); // Renderiza la vista que contiene el componente Livewire
+    })->name('most-liked');
+
+    Route::get('/best-rated', function () {
+        return view('best-rated'); // Renderiza la vista que contiene el componente Livewire
+    })->name('best-rated');
 });
 
 // Endpoint para obtener todas las recetas del sitio
