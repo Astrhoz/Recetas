@@ -19,7 +19,7 @@
                 </x-side-nav-link>
 
                 <x-side-nav-link href="{{ route('most-liked') }}" :active="request()->routeIs('most-liked')">
-                    <x-bytesize-lightning class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
+                    <x-bytesize-heart class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Populares') }}
                 </x-side-nav-link>
 
