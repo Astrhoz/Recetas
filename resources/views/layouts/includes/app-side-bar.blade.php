@@ -1,5 +1,5 @@
-<div class="hidden border-r border-secondary-200 bg-secondary-100 lg:block">
-    <div class="flex h-full max-h-screen flex-col gap-2">
+<div class="hidden border-r border-secondary-200 bg-secondary-100 lg:block sticky top-0 h-screen">
+    <div class="flex h-full flex-col gap-2">
         <div class="flex h-[60px] items-center border-b border-secondary-200 pl-3">
             <a href="{{ url('/') }}" class="flex items-center font-semibold">
                 <x-logo class="h-12" />
@@ -23,7 +23,6 @@
                     {{ __('Populares') }}
                 </x-side-nav-link>
 
-                {{-- Subsección con título y enlaces --}}
                 <div class="flex items-center gap-3 text-secondary-500 ml-4 mt-2 mb-1 font-semibold">
                     <x-bytesize-book class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     Categorías
@@ -41,7 +40,6 @@
                     {{ __('Categoría 4') }}
                 </x-side-nav-link>
 
-                {{-- Usuarios a los que está siguiendo --}}
                 <x-side-nav-link href="{{ route('following') }}" :active="(request()->routeIs('following')) || (request()->routeIs('followers'))">
                     <x-bytesize-user class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Siguiendo') }}
