@@ -3,7 +3,7 @@
         <div class="flex h-[60px] items-center border-b border-secondary-200 pl-3">
             <a href="{{ url('/') }}" class="flex items-center font-semibold">
                 <x-logo class="h-12" />
-                <span class="text-3xl font-semibold font-playwrite cursor-pointer text-secondary">Recetas</span>
+                <span class="text-3xl font-semibold font-playwrite cursor-pointer text-secondary">Recetero</span>
             </a>
         </div>
         <div class="flex-1 overflow-auto py-2">
