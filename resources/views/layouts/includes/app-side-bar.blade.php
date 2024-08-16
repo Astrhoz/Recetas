@@ -13,9 +13,14 @@
                     {{ __('Explorar') }}
                 </x-side-nav-link>
 
-                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
-                    <x-bytesize-lightning class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
+                <x-side-nav-link href="{{ route('best-rated') }}" :active="request()->routeIs('best-rated')">
+                    <x-bytesize-star class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Tendencias') }}
+                </x-side-nav-link>
+
+                <x-side-nav-link href="{{ route('most-liked') }}" :active="request()->routeIs('most-liked')">
+                    <x-bytesize-heart class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
+                    {{ __('Populares') }}
                 </x-side-nav-link>
 
                 {{-- Subsección con título y enlaces --}}
