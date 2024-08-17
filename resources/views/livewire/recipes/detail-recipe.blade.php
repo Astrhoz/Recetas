@@ -4,7 +4,7 @@
             <div class="mb-4">
                 <div class="flex justify-between items-center">
                     <h1 class="font-playwrite text-4xl font-bold">{{ $recipe->title }}</h1>
-                    <a href="{{ url('/') }}" class="inline-flex items-center gap-2 text-secondary-400/80 hover:bg-secondary-200 py-2 px-3 rounded-full">
+                    <a href="{{ url()->previous() }}" class="inline-flex items-center gap-2 text-secondary-400/80 hover:bg-secondary-200 py-2 px-3 rounded-full">
                         <x-bytesize-arrow-left class="h-5 w-5 "/>
                         Regresar
                     </a>
