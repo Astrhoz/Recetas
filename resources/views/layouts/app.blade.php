@@ -40,9 +40,9 @@
                 <div
                     class="w-full bg-secondary-50 py-3 px-4 flex items-center justify-between rounded-md shadow-md sticky top-0 z-10">
                     <h1 class="text-lg text-secondary-900 font-semibold">{{ $title ?? 'Título de la Pestaña' }}</h1>
-                    @if (request()->routeIs('new-recipe'))
+                    @if ((request()->routeIs('new-recipe')) || (request()->routeIs('edit-recipe')))
                         <a href="{{ url('/') }}"
-                            class="bg-red-500/90 text-red-100 text-sm p-2 rounded hover:bg-red-600/90 hover:cursor-pointer">
+                            class="bg-red-500/90 text-white/90 text-sm p-2 rounded hover:bg-red-600/90 hover:cursor-pointer">
                             Cancelar
                         </a>
                     @else

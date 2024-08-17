@@ -8,7 +8,7 @@
         </div>
         <div class="flex-1 overflow-auto py-2">
             <nav>
-                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
+                <x-side-nav-link href="{{ route('explore') }}" :active="request()->routeIs('explore')">
                     <x-bytesize-bookmark class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Explorar') }}
                 </x-side-nav-link>
@@ -51,7 +51,7 @@
 
 <!-- Menú inferior para pantallas pequeñas -->
 <div class="fixed bottom-0 left-0 z-50 w-full h-16 bg-secondary-100 border-t border-secondary-200 flex justify-around items-center lg:hidden">
-    <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')" class="flex flex-col items-center justify-center">
+    <x-side-nav-link href="{{ route('explore') }}" :active="request()->routeIs('explore')">
         <x-bytesize-bookmark class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
         <span class="text-xs text-secondary-400 mt-1">Explorar</span>
     </x-side-nav-link>

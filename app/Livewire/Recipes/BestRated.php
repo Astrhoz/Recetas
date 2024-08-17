@@ -23,6 +23,7 @@ class BestRated extends Component
 
         // Obtener las recetas que coinciden con los IDs obtenidos, respetando el orden
         $recipes = Recipe::whereIn('id', $topRatedRecipeIds)
+                         ->with('users')
                          ->orderByRaw('FIELD(id, ' . implode(',', $topRatedRecipeIds->toArray()) . ')')
                          ->paginate(10); // Ajusta el número según lo necesario
 
