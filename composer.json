@@ -18,6 +18,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "php-flasher/flasher-laravel": "^2.0",
+        "php-flasher/flasher-noty-laravel": "^2.0",
         "shanerbaner82/panel-roles": "^0.0.3"
     },
     "require-dev": {
