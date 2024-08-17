@@ -113,7 +113,7 @@ class FilterRecipe extends Component implements HasForms
     {
         $data = $this->form->getState();
 
-        $recipesQuery = Recipe::query();
+        $recipesQuery = Recipe::query()->with('users');
 
         // Filtrando recetas
         if (!empty($data['title'])) {
