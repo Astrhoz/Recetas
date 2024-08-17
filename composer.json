@@ -23,6 +23,7 @@
         "shanerbaner82/panel-roles": "^0.0.3"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.13",
         "fakerphp/faker": "^1.23",
         "laravel-lang/common": "^6.4",
         "laravel/pint": "^1.13",

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        Recesta en Tendencias
+        Recetas en Tendencia
     </x-slot>
     @livewire('recipes.best-rated')
 </x-app-layout>

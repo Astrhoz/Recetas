@@ -31,6 +31,7 @@ class FeedRecipe extends Component
     public function getRecipesProperty()
     {
         return Recipe::orderBy('created_at', 'desc')
+            ->with('users')
             ->where('title', 'like', "%{$this->search}%")
             ->paginate(10);
     }

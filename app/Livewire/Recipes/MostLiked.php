@@ -23,6 +23,7 @@ class MostLiked extends Component
 
         // Obtener los detalles de las recetas ordenadas por la cantidad de likes
         $recipes = Recipe::whereIn('id', $recipesWithMostLikesIds)
+                         ->with('users')
                          ->orderByRaw('FIELD(id, ' . implode(',', $recipesWithMostLikesIds->toArray()) . ')')
                          ->paginate(10); // Ajusta el número según lo necesario
 
