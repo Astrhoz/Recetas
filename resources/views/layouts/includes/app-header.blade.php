@@ -9,7 +9,7 @@
             <x-nav-link href="{{ route('my-recipes') }}" :active="request()->routeIs('my-recipes')">
                 {{ __('Mis Recetas') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
+            <x-nav-link href="{{ route('saved-recipe') }}" :active="request()->routeIs('saved-recipe')">
                 {{ __('Mi Almacén') }}
             </x-nav-link>
         </div>

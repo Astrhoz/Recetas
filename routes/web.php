@@ -35,6 +35,10 @@ Route::middleware([
         return view('my-recipes'); // Renderiza la vista que contiene el componente Livewire
     })->name('my-recipes');
 
+    Route::get('/saved-recipe', function () {
+        return view('saved-recipe'); // Renderiza la vista que contiene el componente Livewire
+    })->name('saved-recipe');
+
     Route::get('/my-recipes/new-recipe', function () {
         return view('new-recipe'); // Renderiza la vista que contiene el componente Livewire
     })->name('new-recipe');
