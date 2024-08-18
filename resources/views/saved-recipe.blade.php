@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        Recetas más Populares
+        Recetas Guardadas
     </x-slot>
-    @livewire('recipes.most-liked')
+    @livewire('user.saved-recipe')
 </x-app-layout>
