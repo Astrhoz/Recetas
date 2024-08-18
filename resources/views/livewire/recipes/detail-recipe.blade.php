@@ -1,10 +1,10 @@
 <div>
     <div class="w-full text-secondary-900 bg-secondary-50 shadow-md rounded-lg overflow-hidden">
-        <div class="p-6">
+        <div class="p-4 md:p-6">
             <div class="mb-4">
-                <div class="flex justify-between items-center">
-                    <h1 class="font-playwrite text-4xl font-bold">{{ $recipe->title }}</h1>
-                    <a href="{{ url()->previous() }}" class="inline-flex items-center gap-2 text-secondary-400/80 hover:bg-secondary-200 py-2 px-3 rounded-full">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <h1 class="font-playwrite text-2xl md:text-4xl font-bold">{{ $recipe->title }}</h1>
+                    <a href="{{ url()->previous() }}" class="inline-flex items-center gap-2 text-secondary-400/80 hover:bg-secondary-200 py-2 px-3 rounded-full mt-2 md:mt-0">
                         <x-bytesize-arrow-left class="h-5 w-5 "/>
                         Regresar
                     </a>
@@ -33,31 +33,31 @@
             <!-- Componente para calificar la receta -->
             <livewire:ratings.rate-recipe :recipeId="$recipe->id" />
 
-            <h2 class="text-2xl font-semibold mb-3">Ingredientes</h2>
-            <ul class="list-disc pl-8 mb-6">
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3">Ingredientes</h2>
+            <ul class="list-disc pl-5 md:pl-8 mb-4 md:mb-6">
                 @foreach ($recipe->ingredients as $ingredient)
-                    <li class="text-secondary-900 mb-3">{{ $ingredient->quantity }} {{ $ingredient->unit_of_measurement }} de {{ $ingredient->name }}</li>
+                    <li class="text-secondary-900 mb-2 md:mb-3">{{ $ingredient->quantity }} {{ $ingredient->unit_of_measurement }} de {{ $ingredient->name }}</li>
                 @endforeach
             </ul>
 
-            <h2 class="text-2xl font-semibold mb-3">Preparación</h2>
-            <div class="text-secondary-900 prose mb-6">
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3">Preparación</h2>
+            <div class="text-secondary-900 prose mb-4 md:mb-6">
                 {!! $recipe->steps !!}
             </div>
 
-            <h2 class="text-2xl font-semibold mb-3">Consejos</h2>
-            <p class="text-secondary-900 mb-6">{{ $recipe->tips }}</p>
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3">Consejos</h2>
+            <p class="text-secondary-900 mb-4 md:mb-6">{{ $recipe->tips }}</p>
 
-            <h2 class="text-2xl font-semibold mb-3">Categorías</h2>
-            <ul class="list-disc pl-5 mb-6">
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3">Categorías</h2>
+            <ul class="list-disc pl-5 md:pl-8 mb-4 md:mb-6">
                 @foreach ($recipe->categories as $category)
-                    <li class="text-secondary-900 mb-3">{{ $category->name }}</li>
+                    <li class="text-secondary-900 mb-2 md:mb-3">{{ $category->name }}</li>
                 @endforeach
             </ul>
         </div>
     </div>
 
-    <div class="p-6">
+    <div class="p-4 md:p-6">
         <!-- Componente para los comentarios -->
         <livewire:comments.comments-recipe :recipeId="$recipe->id" />
     </div>
