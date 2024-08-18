@@ -7,18 +7,19 @@ use App\Models\Category;
 
 class CategoriesOptions extends Component
 {
-    public function render()
-    {
-        // Obtener las categorías ordenadas por el número de recetas y tomar las 4 primeras
-        $categories = Category::withCount('recipes')
+    public $categories = [];
+
+    public function mount() {
+        $this->categories = Category::withCount('recipes')
             ->orderBy('recipes_count', 'desc')
             ->take(4)
             ->get();
+    }
 
-        // Pasar las categorías filtradas a la vista
+    public function render()
+    {
         return view('livewire.categories.categories-options', [
-            'categories' => $categories,
+            'categories' => $this->categories,
         ]);
     }
 }
-
