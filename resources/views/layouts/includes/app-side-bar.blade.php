@@ -31,24 +31,14 @@
                     {{ __('Populares') }}
                 </x-side-nav-link>
 
-                <div class="flex items-center gap-3 text-secondary-500 ml-4 mt-2 mb-1 font-semibold">
+                <div class="flex items-center gap-3 text-secondary-500 ml-3 mt-2 mb-1 font-semibold">
                     <x-bytesize-book class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     Categorías
                 </div>
-                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')" class="ml-8 text-sm">
-                    {{ __('Categoría 1') }}
-                </x-side-nav-link>
-                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')" class="ml-8 text-sm">
-                    {{ __('Categoría 2') }}
-                </x-side-nav-link>
-                <x-side-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')" class="ml-8 text-sm">
-                    {{ __('Categoría 3') }}
-                </x-side-nav-link>
-                <x-side-nav-link href="{{ route('new-recipe') }}" class="ml-8 text-sm">
-                    {{ __('Categoría 4') }}
-                </x-side-nav-link>
 
-                <x-side-nav-link href="{{ route('following') }}" :active="(request()->routeIs('following')) || (request()->routeIs('followers'))">
+                @livewire('categories.categories-options')
+
+                <x-side-nav-link href="{{ route('following') }}" :active="request()->routeIs('following') || request()->routeIs('followers')">
                     <x-bytesize-user class="h-4 w-4 text-secondary-400/70 fill-secondary-400/70" />
                     {{ __('Siguiendo') }}
                 </x-side-nav-link>
@@ -59,7 +49,8 @@
 
 
 <!-- Menú inferior para pantallas pequeñas -->
-<div class="fixed bottom-0 left-0 z-50 w-full h-16 bg-secondary-100 border-t border-secondary-200 flex justify-between items-center lg:hidden">
+<div
+    class="fixed bottom-0 left-0 z-50 w-full h-16 bg-secondary-100 border-t border-secondary-200 flex justify-between items-center lg:hidden">
     <x-side-nav-link href="{{ url('/') }}" :active="request()->is('/')" class="flex flex-col items-center justify-center">
         <x-bytesize-home class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
         <span class="text-[10px] text-secondary-400 mt-0.5 leading-none">Inicio</span>
@@ -70,17 +61,20 @@
         <span class="text-[10px] text-secondary-400 mt-0.5 leading-none">Explorar</span>
     </x-side-nav-link>
 
-    <x-side-nav-link href="{{ route('best-rated') }}" :active="request()->routeIs('best-rated')" class="flex flex-col items-center justify-center">
+    <x-side-nav-link href="{{ route('best-rated') }}" :active="request()->routeIs('best-rated')"
+        class="flex flex-col items-center justify-center">
         <x-bytesize-star class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
         <span class="text-[10px] text-secondary-400 mt-0.5 leading-none">Tendencias</span>
     </x-side-nav-link>
 
-    <x-side-nav-link href="{{ route('most-liked') }}" :active="request()->routeIs('most-liked')" class="flex flex-col items-center justify-center">
+    <x-side-nav-link href="{{ route('most-liked') }}" :active="request()->routeIs('most-liked')"
+        class="flex flex-col items-center justify-center">
         <x-bytesize-heart class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
         <span class="text-[10px] text-secondary-400 mt-0.5 leading-none">Populares</span>
     </x-side-nav-link>
 
-    <x-side-nav-link href="{{ route('following') }}" :active="request()->routeIs('following')" class="flex flex-col items-center justify-center">
+    <x-side-nav-link href="{{ route('following') }}" :active="request()->routeIs('following')"
+        class="flex flex-col items-center justify-center">
         <x-bytesize-user class="h-6 w-6 text-secondary-400/70 fill-secondary-400/70" />
         <span class="text-[10px] text-secondary-400 mt-0.5 leading-none">Siguiendo</span>
     </x-side-nav-link>

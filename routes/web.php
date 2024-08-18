@@ -74,6 +74,17 @@ Route::middleware([
         return view('explore-recipes');
     })->name('explore');
 
+    Route::get('/categories/{category}', function ($categoryId) {
+        // Encuentra la categoría por su ID o muestra un error 404 si no se encuentra
+        $category = Category::findOrFail($categoryId);
+    
+        // Obtén todas las recetas asociadas a esta categoría
+        $recipes = $category->recipes;
+    
+        // Devuelve la vista y pasa la categoría y las recetas
+        return view('categories-recipes', compact('category', 'recipes'));
+    })->name('categories.show');
+
     Route::get('/most-liked', function () {
         return view('most-liked'); // Renderiza la vista que contiene el componente Livewire
     })->name('most-liked');
