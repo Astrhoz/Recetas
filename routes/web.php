@@ -65,6 +65,11 @@ Route::middleware([
         return view('follows');
     })->name('followers');
 
+    Route::get('/explore', function () {
+        // Devuelve la vista y la receta
+        return view('explore-recipes');
+    })->name('explore');
+
     Route::get('/most-liked', function () {
         return view('most-liked'); // Renderiza la vista que contiene el componente Livewire
     })->name('most-liked');

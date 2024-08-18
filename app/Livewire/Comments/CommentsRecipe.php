@@ -28,6 +28,7 @@ class CommentsRecipe extends Component
     public function loadComments()
     {
         $this->comments = Comment::where('recipe_id', $this->recipeId)
+                                  ->with('users')
                                   ->latest()
                                   ->get();
     }
