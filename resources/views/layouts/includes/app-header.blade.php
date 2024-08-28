@@ -98,7 +98,7 @@
             <x-responsive-nav-link href="{{ route('my-recipes') }}" :active="request()->routeIs('my-recipes')">
                 {{ __('Mis Recetas') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('new-recipe') }}" :active="request()->routeIs('new-recipe')">
+            <x-responsive-nav-link href="{{ route('saved-recipe') }}" :active="request()->routeIs('saved-recipe')">
                 {{ __('Mi Almacén') }}
             </x-responsive-nav-link>
         </div>
